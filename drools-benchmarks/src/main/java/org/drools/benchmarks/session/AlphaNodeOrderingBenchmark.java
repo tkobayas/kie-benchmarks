@@ -18,11 +18,15 @@ package org.drools.benchmarks.session;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.drools.benchmarks.common.AbstractBenchmark;
 import org.drools.benchmarks.common.util.BuildtimeUtil;
+import org.drools.benchmarks.common.util.ReteDumper;
 import org.drools.benchmarks.common.util.RuntimeUtil;
 import org.drools.benchmarks.model.A;
+import org.drools.core.reteoo.AlphaNode;
 import org.kie.api.KieBaseConfiguration;
 import org.kie.api.KieServices;
 import org.kie.api.conf.AlphaNodeOrderingOption;
@@ -46,6 +50,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 public class AlphaNodeOrderingBenchmark extends AbstractBenchmark {
 
     @Param({"10", "30"})
+//    @Param({"10"})
     private int rulesNr;
 
     @Param({"1000"})
@@ -54,7 +59,8 @@ public class AlphaNodeOrderingBenchmark extends AbstractBenchmark {
     @Param({"true", "false"})
     private boolean enableAlphaNodeOdering;
 
-    @Param({"true", "false"})
+//    @Param({"true", "false"})
+    @Param({"false"})
     private boolean useCanonicalModel;
 
     @Setup
@@ -69,6 +75,14 @@ public class AlphaNodeOrderingBenchmark extends AbstractBenchmark {
         kieBaseConfiguration.setOption(enableAlphaNodeOdering ? AlphaNodeOrderingOption.COUNT : AlphaNodeOrderingOption.NONE);
 
         kieBase = kieContainer.newKieBase(kieBaseConfiguration);
+        
+        List<AlphaNode> alphaNodes = MyReteDumper.collectNodes(kieBase)
+                .stream()
+                .filter(AlphaNode.class::isInstance)
+                .map(node -> (AlphaNode) node)
+                .collect(Collectors.toList());
+        
+        System.out.println("alphaNodes.size() = " + alphaNodes.size());
     }
 
     @Setup(Level.Iteration)
@@ -88,7 +102,6 @@ public class AlphaNodeOrderingBenchmark extends AbstractBenchmark {
     @Benchmark
     public int test() {
         int firings = kieSession.fireAllRules();
-        //        System.out.println("firings = " + firings);
         return firings;
     }
 
@@ -106,7 +119,6 @@ public class AlphaNodeOrderingBenchmark extends AbstractBenchmark {
             }
             drlBuilder.append(" ) then end\n");
         }
-        //System.out.println(drlBuilder.toString());
         return drlBuilder.toString();
     }
 
