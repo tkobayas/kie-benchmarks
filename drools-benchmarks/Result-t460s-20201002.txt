@@ -1,0 +1,61 @@
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1 -i 1 org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark
+
+Benchmark                             (rangeIndexingEnabled)  (rulesAndFactsNumber)  Mode  Cnt      Score   Error  Units
+AlphaNodeRangeIndexingBenchmark.test                   false                      4    ss        2657.967          us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                      8    ss        6214.794          us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     32    ss       12011.754          us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     64    ss       24121.925          us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      4    ss        1713.730          us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      8    ss        4502.929          us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     32    ss        8007.632          us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     64    ss       25374.538          us/op
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1000 -i 100 org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark
+
+Benchmark                             (rangeIndexingEnabled)  (rulesAndFactsNumber)  Mode  Cnt     Score     Error  Units
+AlphaNodeRangeIndexingBenchmark.test                   false                      4    ss  100   104.501 ±  32.900  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                      8    ss  100   143.019 ±  22.569  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     32    ss  100   660.823 ± 153.843  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     64    ss  100  2128.367 ± 177.635  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      4    ss  100   111.132 ±  20.142  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      8    ss  100   132.565 ±  20.416  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     32    ss  100   605.023 ± 104.504  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     64    ss  100  1560.629 ± 352.412  us/op
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 5000 -i 500 org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark
+
+Benchmark                             (rangeIndexingEnabled)  (rulesAndFactsNumber)  Mode  Cnt     Score    Error  Units
+AlphaNodeRangeIndexingBenchmark.test                   false                      4    ss  500    34.242 ±  3.188  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                      8    ss  500    65.670 ±  4.281  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     32    ss  500   515.625 ± 19.438  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     64    ss  500  1849.398 ± 56.347  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      4    ss  500    29.117 ±  1.339  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      8    ss  500    61.477 ±  4.452  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     32    ss  500   407.927 ± 40.193  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     64    ss  500  1436.046 ± 75.433  us/op
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 10000 -i 1000 org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark
+
+Benchmark                             (rangeIndexingEnabled)  (rulesAndFactsNumber)  Mode   Cnt     Score    Error  Units
+AlphaNodeRangeIndexingBenchmark.test                   false                      4    ss  1000    26.289 ±  1.885  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                      8    ss  1000    51.873 ±  3.474  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     32    ss  1000   346.293 ± 10.600  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     64    ss  1000  1373.498 ± 40.692  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      4    ss  1000    20.027 ±  1.348  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      8    ss  1000    61.772 ±  2.450  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     32    ss  1000   294.730 ±  7.839  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     64    ss  1000  1081.953 ± 29.930  us/op
+
+
+<default>
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 100000 -i 10000 org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark
+
+Benchmark                             (rangeIndexingEnabled)  (rulesAndFactsNumber)  Mode    Cnt     Score   Error  Units
+AlphaNodeRangeIndexingBenchmark.test                   false                      4    ss  10000    12.611 ± 0.630  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                      8    ss  10000    34.095 ± 2.003  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     32    ss  10000   324.090 ± 3.411  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     64    ss  10000  1420.926 ± 9.490  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      4    ss  10000    13.378 ± 0.298  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      8    ss  10000    29.667 ± 0.422  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     32    ss  10000   302.344 ± 3.354  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     64    ss  10000  1128.618 ± 9.915  us/op
