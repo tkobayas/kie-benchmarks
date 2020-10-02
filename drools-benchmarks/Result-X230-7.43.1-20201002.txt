@@ -1,0 +1,19 @@
+<default>
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 100000 -i 10000 org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark
+
+Benchmark                             (rangeIndexingEnabled)  (rulesAndFactsNumber)  Mode    Cnt      Score    Error  Units
+AlphaNodeRangeIndexingBenchmark.test                   false                      4    ss  10000     19.115 ±  0.331  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                      8    ss  10000     45.110 ±  0.811  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     32    ss  10000    452.288 ±  5.499  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     64    ss  10000   1700.974 ± 18.075  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                    128    ss  10000  11730.322 ± 66.508  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      4    ss  10000     19.833 ±  0.357  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      8    ss  10000     46.563 ±  0.732  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     32    ss  10000    429.333 ±  4.899  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     64    ss  10000   1783.818 ± 18.974  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                    128    ss  10000   7012.690 ± 19.683  us/op
+
+There must be no difference between rangeIndexingEnabled true and false in drools 7.43.1.Final.
+
+Hmm, not very constant. But there doesn't seem to be a performance regression.
+
