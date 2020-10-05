@@ -1,0 +1,16 @@
+
+<default>
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 100000 -i 10000 org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark
+
+Benchmark                             (rangeIndexingEnabled)  (rulesAndFactsNumber)  Mode    Cnt      Score    Error  Units
+AlphaNodeRangeIndexingBenchmark.test                   false                      4    ss  10000     19.035 ±  0.267  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                      8    ss  10000     43.748 ±  0.548  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     32    ss  10000    456.474 ±  6.108  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     64    ss  10000   1753.685 ± 19.105  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                    128    ss  10000  10525.675 ± 65.249  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      4    ss  10000     19.848 ±  0.406  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      8    ss  10000     45.988 ±  1.010  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     32    ss  10000    477.721 ±  6.253  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     64    ss  10000   1362.178 ± 14.967  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                    128    ss  10000   5770.794 ± 43.435  us/op
+
