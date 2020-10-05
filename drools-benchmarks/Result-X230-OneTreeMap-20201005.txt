@@ -14,3 +14,16 @@ AlphaNodeRangeIndexingBenchmark.test                    true                    
 AlphaNodeRangeIndexingBenchmark.test                    true                     64    ss  10000  1361.547 ± 15.108  us/op
 AlphaNodeRangeIndexingBenchmark.test                    true                    128    ss  10000  6737.657 ± 46.510  us/op
 
+Benchmark                             (rangeIndexingEnabled)  (rulesAndFactsNumber)  Mode    Cnt     Score    Error  Units
+AlphaNodeRangeIndexingBenchmark.test                   false                      4    ss  10000    21.603 ±  0.585  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                      8    ss  10000    47.314 ±  1.281  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     32    ss  10000   455.323 ±  6.225  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                     64    ss  10000  1886.651 ± 20.190  us/op
+AlphaNodeRangeIndexingBenchmark.test                   false                    128    ss  10000  7505.921 ± 20.076  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      4    ss  10000    16.778 ±  0.163  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                      8    ss  10000    37.543 ±  0.407  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     32    ss  10000   312.716 ±  2.800  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                     64    ss  10000  1074.194 ±  6.220  us/op
+AlphaNodeRangeIndexingBenchmark.test                    true                    128    ss  10000  5541.245 ± 14.578  us/op
+
+
