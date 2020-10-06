@@ -27,7 +27,8 @@ public class AlphaNodeRangeIndexingBenchmark extends AbstractOperatorsBenchmark 
     //@Param({"4", "8"})
     protected int rulesAndFactsNumber; // actually, the number of rules is "rulesAndFactsNumber * 2"
 
-    @Param({"false", "true"})
+    //@Param({"false", "true"})
+    @Param({"true"})
     protected boolean rangeIndexingEnabled;
 
     @Setup
