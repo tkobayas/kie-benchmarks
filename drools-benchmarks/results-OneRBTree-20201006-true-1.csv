@@ -1,0 +1,6 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: rangeIndexingEnabled","Param: rulesAndFactsNumber"
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark.test","ss",1,50000,17.500677,0.200652,"us/op",true,4
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark.test","ss",1,50000,34.905094,0.153060,"us/op",true,8
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark.test","ss",1,50000,320.992980,1.274669,"us/op",true,32
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark.test","ss",1,50000,1125.058253,3.519203,"us/op",true,64
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark.test","ss",1,50000,5168.926080,8.391223,"us/op",true,128
