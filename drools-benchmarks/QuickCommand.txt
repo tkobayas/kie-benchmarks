@@ -8,3 +8,20 @@ java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -
 
 <default>
 java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 100000 -i 10000 org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark
+
+
+
+
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1 -i 1 org.drools.benchmarks.operators.TreeMapRBTreeBenchmark
+
+
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1000 -i 100 org.drools.benchmarks.operators.TreeMapRBTreeBenchmark
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 5000 -i 500 org.drools.benchmarks.operators.TreeMapRBTreeBenchmark
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 10000 -i 1000 org.drools.benchmarks.operators.TreeMapRBTreeBenchmark
+
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 5 -wi 100000 -i 10000 org.drools.benchmarks.operators.TreeMapRBTreeBenchmark
