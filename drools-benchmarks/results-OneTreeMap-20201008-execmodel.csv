@@ -1,0 +1,17 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: rangeIndexingEnabled","Param: rulesAndFactsNumber","Param: useCanonicalModel"
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,19.096053,0.228423,"us/op",false,4,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,19.765560,0.262424,"us/op",false,4,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,47.933117,0.650036,"us/op",false,8,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,45.411655,0.691779,"us/op",false,8,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,426.167410,1.953596,"us/op",false,32,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,356.607214,1.181952,"us/op",false,32,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,1538.020692,3.547157,"us/op",false,64,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,1553.407400,3.988824,"us/op",false,64,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,18.145936,0.087577,"us/op",true,4,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,17.627649,0.086379,"us/op",true,4,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,37.512351,0.718394,"us/op",true,8,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,37.146790,0.375171,"us/op",true,8,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,313.684566,1.266716,"us/op",true,32,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,305.191812,1.245273,"us/op",true,32,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,1095.999779,2.912186,"us/op",true,64,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark.test","ss",1,50000,1069.077674,2.850404,"us/op",true,64,false
