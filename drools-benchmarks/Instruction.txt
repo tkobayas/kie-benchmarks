@@ -1,0 +1,40 @@
+1. Create 2 drools directories for OneTreeMap and OneRBTree.
+
+   e.g. in my case, /home/tkobayas/usr/work/DROOLS-5647/drools-OneTreeMap/drools
+                    /home/tkobayas/usr/work/DROOLS-5647/drools-OneRBTree/drools
+
+2. Checkout https://github.com/tkobayas/drools/tree/DROOLS-5647-OneTreeMap
+            https://github.com/tkobayas/drools/tree/DROOLS-5647-OneRBTree
+   
+   respectively to the directories. (Or you can checkout from PRs https://github.com/kiegroup/drools/pull/3139 , https://github.com/kiegroup/drools/pull/3142)
+
+3. "mvn clean install" under DROOLS-5647-OneTreeMap/drools in order to overwrite 7.45.0-SNAPSHOT jars in your local mvn repo.
+
+4. Checkout this kie-benchmarks branch https://github.com/tkobayas/kie-benchmarks/tree/DROOLS-5647-wip in a different directory
+
+5. "mvn clean install" under kie-benchmarks (because kie-benchmarks 7.45.0-SNAPSHOT doesn't exist in maven central)
+
+6. cd drools-benchmarks
+
+7. Edit autoBuild.sh
+
+   File paths are written in the file so you will need to edit it to meet your file paths.
+   
+8. Run autoBuild.sh. It will create drools-benchmarks-OneTreeMap.jar and drools-benchmarks-OneRBTree.jar
+
+   *** NOTE: drools-benchmarks-OneRBTree.jar.20201007 and drools-benchmarks-OneTreeMap.jar.20201007 are the jars I used for my previous benchmark.
+   *** If you rename and use them, you can skip the build part. (but they don't include AlphaNodeRangeIndexingExecModelBenchmark and TreeMapRBTreeBenchmark)
+
+9. Run autoRun-1run.sh to check if it works correctly
+
+10. Run autoRun.sh. Results will be written to results-OneTreeMap.csv and results-OneRBTree.csv.
+
+Note that it takes 3 hours with my sub laptop. So you may want to change -f/-wi/-i or  params in AlphaNodeRangeIndexingBenchmark.
+
+#####
+For executable model test, use autoRun-exec.sh
+
+#####
+For micro benchmark TreeMap vs RBTree, please run the command: (no matter which drools branch you use DROOLS-5647-OneTreeMap / DROOLS-5647-OneRBTree)
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 5 -wi 100000 -i 10000 org.drools.benchmarks.operators.TreeMapRBTreeBenchmark
