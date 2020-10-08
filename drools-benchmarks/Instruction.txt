@@ -4,7 +4,14 @@
                     /home/tkobayas/usr/work/DROOLS-5647/drools-OneRBTree/drools
 
 2. Checkout https://github.com/tkobayas/drools/tree/DROOLS-5647-OneTreeMap
-            https://github.com/tkobayas/drools/tree/DROOLS-5647-OneRBTree
+            ->
+              git clone https://github.com/tkobayas/drools.git
+              git checkout -b DROOLS-5647-OneTreeMap remotes/origin/DROOLS-5647-OneTreeMap
+     
+          and https://github.com/tkobayas/drools/tree/DROOLS-5647-OneRBTree
+            ->
+              git clone https://github.com/tkobayas/drools.git
+              git checkout -b DROOLS-5647-OneRBTree remotes/origin/DROOLS-5647-OneRBTree
    
    respectively to the directories. (Or you can checkout from PRs https://github.com/kiegroup/drools/pull/3139 , https://github.com/kiegroup/drools/pull/3142)
 
