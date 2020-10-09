@@ -1,4 +1,4 @@
-0. Build droolsjbpm-knowledge without Oct 8's commit (ae1a964212dffd37c0be0419bd8b581ed5b67b5d). (because I've been testing without the api change)
+0. Build droolsjbpm-knowledge without Oct 8th's commit (ae1a964212dffd37c0be0419bd8b581ed5b67b5d). (because I've been testing without the api change)
       git clone https://github.com/kiegroup/droolsjbpm-knowledge.git
       git checkout 0891ee943bdd023ac7fb5e4bffd1589c4e30b16a
       mvn clean install -DskipTests
@@ -23,6 +23,8 @@
 3. "mvn clean install -DskipTests" under DROOLS-5647-OneTreeMap/drools in order to overwrite 7.45.0-SNAPSHOT jars in your local mvn repo.
 
 4. Checkout this kie-benchmarks branch https://github.com/tkobayas/kie-benchmarks/tree/DROOLS-5647-wip in a different directory
+      git clone https://github.com/tkobayas/kie-benchmarks.git
+      git checkout -b DROOLS-5647-wip remotes/origin/DROOLS-5647-wip
 
 5. "mvn clean install -DskipTests" under kie-benchmarks (because kie-benchmarks 7.45.0-SNAPSHOT doesn't exist in maven central)
 
