@@ -1,3 +1,8 @@
+0. Build droolsjbpm-knowledge without Oct 8's commit (ae1a964212dffd37c0be0419bd8b581ed5b67b5d). (because I've been testing without the api change)
+      git clone https://github.com/kiegroup/droolsjbpm-knowledge.git
+      git checkout 0891ee943bdd023ac7fb5e4bffd1589c4e30b16a
+      mvn clean install
+
 1. Create 2 drools directories for OneTreeMap and OneRBTree.
 
    e.g. in my case, /home/tkobayas/usr/work/DROOLS-5647/drools-OneTreeMap/drools
