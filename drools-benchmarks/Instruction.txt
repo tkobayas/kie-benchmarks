@@ -36,7 +36,7 @@
    
 8. Run autoBuild.sh. It will create drools-benchmarks-OneTreeMap.jar and drools-benchmarks-OneRBTree.jar
 
-   *** NOTE: drools-benchmarks-OneRBTree.jar.20201007 and drools-benchmarks-OneTreeMap.jar.20201007 are the jars I used for my previous benchmark.
+   *** NOTE: drools-benchmarks-OneRBTree.jar.20201007 and drools-benchmarks-OneTreeMap.jar.20201007 in this repo are the jars I used for my previous benchmark.
    *** If you rename and use them, you can skip the build part. (but they don't yet include AlphaNodeRangeIndexingExecModelBenchmark and TreeMapRBTreeBenchmark)
 
 9. Run autoRun-1run.sh to check if it works correctly
