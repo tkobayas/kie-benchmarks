@@ -46,18 +46,20 @@ public class TreeMapRBTreeBenchmark {
 
     @Setup
     public void setupTree() {
-        if (!treeImpl.equals("TreeMap")) {
+        if (treeImpl.equals("TreeMap")) {
             isTreeMap = true;
         } else {
             isTreeMap = false;
         }
 
         if (isTreeMap) {
+            // TreeMap
             for (int i = 0; i < numOfNode; i++) {
                 map.put(new IndexKey<>(IndexType.GE, Double.valueOf(i * 10000)), "valueGE" + (i * 10000));
                 map.put(new IndexKey<>(IndexType.LT, Double.valueOf(i * 10000)), "valueLT" + (i * 10000));
             }
         } else {
+            // RBTree
             for (int i = 0; i < numOfNode; i++) {
                 tree.insert(new IndexKey<>(IndexType.GE, Double.valueOf(i * 10000)), "valueGE" + (i * 10000));
                 tree.insert(new IndexKey<>(IndexType.LT, Double.valueOf(i * 10000)), "valueLT" + (i * 10000));
