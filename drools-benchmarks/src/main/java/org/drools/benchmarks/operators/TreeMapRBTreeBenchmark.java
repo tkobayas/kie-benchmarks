@@ -34,8 +34,9 @@ public class TreeMapRBTreeBenchmark {
 
     private boolean isTreeMap = true;
 
-    @Param({"4", "8", "32", "64", "128"})
+    //@Param({"4", "8", "32", "64", "128"})
     //@Param({"4", "8"})
+    @Param({"128"})
     protected int numOfNode; // actually, the number of Node is "numOfNode * 2" because each has ">=" and "<"
 
     private final TreeMap<IndexKey<Comparable>, String> map = new TreeMap<>();
@@ -47,20 +48,22 @@ public class TreeMapRBTreeBenchmark {
     @Setup
     public void setupTree() {
         if (treeImpl.equals("TreeMap")) {
+            //System.out.println("### TreeMap");
             isTreeMap = true;
         } else {
+            //System.out.println("### RBTree");
             isTreeMap = false;
         }
 
         if (isTreeMap) {
             // TreeMap
-            for (int i = 0; i < numOfNode; i++) {
+            for (int i = 1; i <= numOfNode; i++) {
                 map.put(new IndexKey<>(IndexType.GE, Double.valueOf(i * 10000)), "valueGE" + (i * 10000));
                 map.put(new IndexKey<>(IndexType.LT, Double.valueOf(i * 10000)), "valueLT" + (i * 10000));
             }
         } else {
             // RBTree
-            for (int i = 0; i < numOfNode; i++) {
+            for (int i = 1; i <= numOfNode; i++) {
                 tree.insert(new IndexKey<>(IndexType.GE, Double.valueOf(i * 10000)), "valueGE" + (i * 10000));
                 tree.insert(new IndexKey<>(IndexType.LT, Double.valueOf(i * 10000)), "valueLT" + (i * 10000));
             }

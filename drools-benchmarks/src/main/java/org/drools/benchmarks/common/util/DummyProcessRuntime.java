@@ -24,6 +24,7 @@ import org.drools.core.runtime.process.InternalProcessRuntime;
 import org.kie.api.event.process.ProcessEventListener;
 import org.kie.api.runtime.process.ProcessInstance;
 import org.kie.api.runtime.process.WorkItemManager;
+import org.kie.api.runtime.rule.AgendaFilter;
 import org.kie.internal.process.CorrelationKey;
 
 public class DummyProcessRuntime implements InternalProcessRuntime {
@@ -139,6 +140,16 @@ public class DummyProcessRuntime implements InternalProcessRuntime {
 
     @Override
     public ProcessInstance getProcessInstance(final CorrelationKey correlationKey) {
+        return null;
+    }
+
+    @Override
+    public ProcessInstance startProcess(String processId, AgendaFilter agendaFilter) {
+        return null;
+    }
+
+    @Override
+    public ProcessInstance startProcess(String processId, Map<String, Object> parameters, AgendaFilter agendaFilter) {
         return null;
     }
 }

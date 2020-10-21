@@ -46,7 +46,7 @@ public class AlphaNodeRangeIndexingExecModelBenchmark extends AbstractOperatorsB
     public void setupKieBase() throws IOException {
         
         if (!rangeIndexingEnabled) {
-            System.setProperty("drools.alphaNodeRangeIndexing.enabled", "false"); // Default true
+            System.setProperty("drools.alphaNodeRangeIndex.enabled", "false"); // Default true
         }
         
         StringBuilder sb = new StringBuilder();
