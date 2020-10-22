@@ -64,3 +64,9 @@ java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf cs
 
 ===
 
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1 -i 1 org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark
+
+# Run complete. Total time: 00:00:30
+
+
+
