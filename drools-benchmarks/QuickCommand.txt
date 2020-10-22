@@ -31,15 +31,34 @@ java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 5 -
 
 java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1 -i 1 org.drools.benchmarks.operators.AlphaNodeRangeIndexingSinkFanOutBenchmark
 
+# Run complete. Total time: 00:01:49
 
 java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 2 -i 2 org.drools.benchmarks.operators.AlphaNodeRangeIndexingSinkFanOutBenchmark
 
+# Run complete. Total time: 00:01:50
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results-SinkFanOutOneRBTree.csv -f 5 -wi 100000 -i 10000 org.drools.benchmarks.operators.AlphaNodeRangeIndexingSinkFanOutBenchmark 
+
+# Run complete. Total time: 01:46:04
 
 ===
 
 java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1 -i 1 org.drools.benchmarks.operators.AlphaNodeRangeIndexingTraversalBenchmark
 
-# Run complete. Total time: 00:02:41
+# Run complete. Total time: 00:03:39
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results-TraversalOneRBTree.csv -f 5 -wi 20000 -i 10000 org.drools.benchmarks.operators.AlphaNodeRangeIndexingTraversalBenchmark
+
+# Run complete. Total time: 08:18:27
+
+===
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1000 -i 100 org.drools.benchmarks.operators.TreeMapRBTreeTraversalBenchmark
+
+# Run complete. Total time: 00:00:14
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results-TraversalTreeMapRBTree.csv -f 5 -wi 100000 -i 10000 org.drools.benchmarks.operators.TreeMapRBTreeTraversalBenchmark
 
 
+===
 
