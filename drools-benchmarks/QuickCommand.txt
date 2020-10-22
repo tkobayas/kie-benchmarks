@@ -59,6 +59,8 @@ java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -
 
 java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results-TraversalTreeMapRBTree.csv -f 5 -wi 100000 -i 10000 org.drools.benchmarks.operators.TreeMapRBTreeTraversalBenchmark
 
+# Run complete. Total time: 00:19:59
+
 
 ===
 
