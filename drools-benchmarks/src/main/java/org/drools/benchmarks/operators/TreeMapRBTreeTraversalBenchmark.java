@@ -102,14 +102,14 @@ public class TreeMapRBTreeTraversalBenchmark {
             for (Account account : accounts) {
                 Comparable key = account.getBalance();
                 //System.out.println(key);
-                int count = 0;
+                //int count = 0;
                 FastIterator it = tree.range(new IndexKey<>(IndexType.LT, key), false, new IndexKey<>(IndexType.GT, key), false);
                 for (Entry entry = it.next(null); entry != null; entry = it.next(entry)) {
                     RBTree.Node<Comparable<Comparable>, String> node = (RBTree.Node<Comparable<Comparable>, String>) entry;
                     String string = node.value;
                     eater.consume(string); // do some work
                     //System.out.println("  hit -> " + string);
-                    count++;
+                    //count++;
                 }
                 //System.out.println("  count -> " + count);
                 //System.out.println("    ratio = " + ((double)count / sinkNum));
