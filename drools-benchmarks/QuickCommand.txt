@@ -12,6 +12,9 @@ java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -
 
 ===
 
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1 -i 1 org.drools.benchmarks.operators.AlphaNodeRangeIndexingExecModelBenchmark
+
+===
 
 java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1 -i 1 org.drools.benchmarks.operators.TreeMapRBTreeBenchmark
 

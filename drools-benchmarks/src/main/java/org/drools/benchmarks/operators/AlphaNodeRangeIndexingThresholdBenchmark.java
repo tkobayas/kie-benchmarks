@@ -46,19 +46,13 @@ import org.openjdk.jmh.infra.Blackhole;
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 public class AlphaNodeRangeIndexingThresholdBenchmark extends AbstractBenchmark {
 
-
-
     protected static final String RULENAME_PREFIX = "AccountBalance";
-
 
     @Param({"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
     protected int _sinkNum;
     
     @Param({"false", "true"})
     protected boolean rangeIndexingEnabled;
-    
-//    @Param({"1"})
-//    protected int threshold;
 
     private Set<Account> accounts;
 
@@ -74,10 +68,6 @@ public class AlphaNodeRangeIndexingThresholdBenchmark extends AbstractBenchmark 
 
     @Setup
     public void setupKieBase() {
-        
-        if (!rangeIndexingEnabled) {
-            System.setProperty("drools.alphaNodeRangeIndex.enabled", "false"); // Default true
-        }
 
         StringBuilder sb = new StringBuilder();
         sb.append( "import org.drools.benchmarks.model.*;\n" );
@@ -90,9 +80,14 @@ public class AlphaNodeRangeIndexingThresholdBenchmark extends AbstractBenchmark 
         }
 
         //System.out.println(sb.toString());
-        
-        kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString(), AlphaRangeIndexThresholdOption.get(1));
-        
+
+        if (rangeIndexingEnabled) {
+            // use 1 because wanted to compare from minimal value (but actually, sink = 1 means SingleObjectSinkAdapter so there is no difference)
+            kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString(), AlphaRangeIndexThresholdOption.get(1));
+        } else {
+            kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString(), AlphaRangeIndexThresholdOption.get(0));
+        }
+
 //        if (sinkNum > 2) {
 //            ObjectTypeNode otn = null;
 //            final List<ObjectTypeNode> nodes = ((KnowledgeBaseImpl) kieBase).getRete().getObjectTypeNodes();

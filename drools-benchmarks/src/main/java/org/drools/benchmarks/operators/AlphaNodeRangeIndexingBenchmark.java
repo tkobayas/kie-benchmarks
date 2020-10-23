@@ -16,6 +16,7 @@
 package org.drools.benchmarks.operators;
 
 import org.drools.benchmarks.common.util.BuildtimeUtil;
+import org.kie.internal.conf.AlphaRangeIndexThresholdOption;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Setup;
@@ -23,21 +24,17 @@ import org.openjdk.jmh.infra.Blackhole;
 
 public class AlphaNodeRangeIndexingBenchmark extends AbstractOperatorsBenchmark {
 
-    @Param({"4", "8", "32", "64", "128"})
+    @Param({"4", "8", "32", "64"})
     //@Param({"4", "8"})
     protected int rulesAndFactsNumber; // actually, the number of rules is "rulesAndFactsNumber * 2"
 
-    //@Param({"false", "true"})
-    @Param({"true"})
+    @Param({"false", "true"})
+    //@Param({"true"})
     protected boolean rangeIndexingEnabled;
 
     @Setup
     public void setupKieBase() {
-        
-        if (!rangeIndexingEnabled) {
-            System.setProperty("drools.alphaNodeRangeIndex.enabled", "false"); // Default true
-        }
-        
+
         StringBuilder sb = new StringBuilder();
         sb.append( "import org.drools.benchmarks.model.*;\n" );
         for (int i = 1; i <= rulesAndFactsNumber; i++) {
@@ -54,8 +51,12 @@ public class AlphaNodeRangeIndexingBenchmark extends AbstractOperatorsBenchmark 
         }
 
         //System.out.println(sb.toString());
-        
-        kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString());
+
+        if (rangeIndexingEnabled) {
+            kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString(), AlphaRangeIndexThresholdOption.get(3));
+        } else {
+            kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString(), AlphaRangeIndexThresholdOption.get(0));
+        }
     }
 
     @Benchmark

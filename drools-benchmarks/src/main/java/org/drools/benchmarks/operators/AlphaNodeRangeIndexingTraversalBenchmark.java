@@ -23,6 +23,7 @@ import org.drools.benchmarks.common.AbstractBenchmark;
 import org.drools.benchmarks.common.util.BuildtimeUtil;
 import org.drools.benchmarks.common.util.RuntimeUtil;
 import org.drools.benchmarks.model.Account;
+import org.kie.internal.conf.AlphaRangeIndexThresholdOption;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
@@ -42,8 +43,6 @@ public class AlphaNodeRangeIndexingTraversalBenchmark extends AbstractBenchmark 
 
     protected static final String RULENAME_PREFIX = "AccountBalance";
 
-    //@Param({"1", "5", "10", "50", "100", "500", "1000", "2000", "5000", "10000"})
-    //@Param({"1", "5"})
     @Param({"10000"})
     protected int sinkNum;
 
@@ -66,11 +65,7 @@ public class AlphaNodeRangeIndexingTraversalBenchmark extends AbstractBenchmark 
 
     @Setup
     public void setupKieBase() {
-        
-        if (!rangeIndexingEnabled) {
-            System.setProperty("drools.alphaNodeRangeIndex.enabled", "false"); // Default true
-        }
-        
+
         StringBuilder sb = new StringBuilder();
         sb.append( "import org.drools.benchmarks.model.*;\n" );
         for (int i = 1; i <= sinkNum; i++) {
@@ -82,8 +77,12 @@ public class AlphaNodeRangeIndexingTraversalBenchmark extends AbstractBenchmark 
         }
 
         //System.out.println(sb.toString());
-        
-        kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString());
+
+        if (rangeIndexingEnabled) {
+            kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString(), AlphaRangeIndexThresholdOption.get(3));
+        } else {
+            kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString(), AlphaRangeIndexThresholdOption.get(0));
+        }
     }
 
     @Setup(Level.Iteration)

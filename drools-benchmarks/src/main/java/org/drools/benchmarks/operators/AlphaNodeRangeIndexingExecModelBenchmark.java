@@ -17,8 +17,17 @@ package org.drools.benchmarks.operators;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.List;
+import java.util.Map;
 
 import org.drools.benchmarks.common.util.BuildtimeUtil;
+import org.drools.benchmarks.model.Account;
+import org.drools.core.base.ClassObjectType;
+import org.drools.core.impl.KnowledgeBaseImpl;
+import org.drools.core.reteoo.CompositeObjectSinkAdapter;
+import org.drools.core.reteoo.CompositeObjectSinkAdapter.FieldIndex;
+import org.drools.core.reteoo.ObjectTypeNode;
+import org.drools.core.util.index.AlphaRangeIndex;
 import org.kie.api.KieServices;
 import org.kie.api.builder.ReleaseId;
 import org.kie.api.io.Resource;
@@ -40,41 +49,59 @@ public class AlphaNodeRangeIndexingExecModelBenchmark extends AbstractOperatorsB
     protected boolean rangeIndexingEnabled;
 
     @Param({ "true", "false" })
+    //@Param({"false"})
     private boolean useCanonicalModel;
 
     @Setup
     public void setupKieBase() throws IOException {
-        
-        if (!rangeIndexingEnabled) {
-            System.setProperty("drools.alphaNodeRangeIndex.enabled", "false"); // Default true
-        }
-        
+
         StringBuilder sb = new StringBuilder();
-        sb.append( "import org.drools.benchmarks.model.*;\n" );
+        sb.append("import org.drools.benchmarks.model.*;\n");
         for (int i = 1; i <= rulesAndFactsNumber; i++) {
             sb.append(" rule " + RULENAME_PREFIX + "_asc" + i + "\n" +
-                    " when \n " +
-                    "     $account : Account(balance >= " + (i * 10000) + ")\n " +
-                    " then\n " +
-                    " end\n" );
+                      " when \n " +
+                      "     $account : Account(balance >= " + (i * 10000) + ")\n " +
+                      " then\n " +
+                      " end\n");
             sb.append(" rule " + RULENAME_PREFIX + "_desc" + i + "\n" +
-                    " when \n " +
-                    "     $account : Account(balance < " + (i * 10000) + ")\n " +
-                    " then\n " +
-                    " end\n" );
+                      " when \n " +
+                      "     $account : Account(balance < " + (i * 10000) + ")\n " +
+                      " then\n " +
+                      " end\n");
         }
 
         //System.out.println(sb.toString());
-        
+
+        if (rangeIndexingEnabled) {
+            System.setProperty("drools.alphaNodeRangeIndexThreshold", "3");
+        } else {
+            System.setProperty("drools.alphaNodeRangeIndexThreshold", "0");
+        }
+
         Resource drlResource = KieServices.get().getResources()
-                .newReaderResource(new StringReader(sb.toString()))
-                .setResourceType(ResourceType.DRL)
-                .setSourcePath("drlFile.drl");
-        
+                                          .newReaderResource(new StringReader(sb.toString()))
+                                          .setResourceType(ResourceType.DRL)
+                                          .setSourcePath("drlFile.drl");
+
         ReleaseId releaseId = BuildtimeUtil.createKJarFromResources(useCanonicalModel, drlResource);
         KieContainer kieContainer = KieServices.get().newKieContainer(releaseId);
 
         kieBase = kieContainer.getKieBase();
+
+//        ObjectTypeNode otn = null;
+//        final List<ObjectTypeNode> nodes = ((KnowledgeBaseImpl) kieBase).getRete().getObjectTypeNodes();
+//        for (final ObjectTypeNode n : nodes) {
+//            if (((ClassObjectType) n.getObjectType()).getClassType() == Account.class) {
+//                otn = n;
+//            }
+//        }
+//        final CompositeObjectSinkAdapter sinkAdapter = (CompositeObjectSinkAdapter) otn.getObjectSinkPropagator();
+//        Map<FieldIndex, AlphaRangeIndex> rangeIndexMap = sinkAdapter.getRangeIndexMap();
+//        if (rangeIndexMap == null) {
+//            System.out.println("rangeIndexMap is null");
+//        } else {
+//            System.out.println("rangeIndexMap size = " + rangeIndexMap.entrySet().iterator().next().getValue().size());
+//        }
     }
 
     @Benchmark

@@ -23,6 +23,7 @@ import org.drools.benchmarks.common.AbstractBenchmark;
 import org.drools.benchmarks.common.util.BuildtimeUtil;
 import org.drools.benchmarks.common.util.RuntimeUtil;
 import org.drools.benchmarks.model.Account;
+import org.kie.internal.conf.AlphaRangeIndexThresholdOption;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
@@ -60,24 +61,24 @@ public class AlphaNodeRangeIndexingSinkFanOutBenchmark extends AbstractBenchmark
 
     @Setup
     public void setupKieBase() {
-        
-        if (!rangeIndexingEnabled) {
-            System.setProperty("drools.alphaNodeRangeIndex.enabled", "false"); // Default true
-        }
-        
+
         StringBuilder sb = new StringBuilder();
-        sb.append( "import org.drools.benchmarks.model.*;\n" );
+        sb.append("import org.drools.benchmarks.model.*;\n");
         for (int i = 1; i <= sinkNum; i++) {
             sb.append(" rule " + RULENAME_PREFIX + i + "\n" +
-                    " when \n " +
-                    "     $account : Account(balance >= " + (i * 10000) + ")\n " +
-                    " then\n " +
-                    " end\n" );
+                      " when \n " +
+                      "     $account : Account(balance >= " + (i * 10000) + ")\n " +
+                      " then\n " +
+                      " end\n");
         }
 
         //System.out.println(sb.toString());
-        
-        kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString());
+
+        if (rangeIndexingEnabled) {
+            kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString(), AlphaRangeIndexThresholdOption.get(3));
+        } else {
+            kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString(), AlphaRangeIndexThresholdOption.get(0));
+        }
     }
 
     @Setup(Level.Iteration)
