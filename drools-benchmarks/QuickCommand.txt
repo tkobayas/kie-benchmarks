@@ -9,6 +9,9 @@ java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -
 <default>
 java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 100000 -i 10000 org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark
 
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results-bench.csv -f 5 -wi 100000 -i 10000 org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark
+
+# Run complete. Total time: 00:55:35
 
 ===
 
@@ -77,6 +80,12 @@ java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf cs
 
 java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results-Threshold.csv -f 5 -wi 100000 -i 10000 org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark
 
+===
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1 -i 1 org.drools.benchmarks.operators.AlphaNodeRangeIndexingEMThresholdBenchmark
+
+# Run complete. Total time: 00:02:05
 
 
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results-EMThreshold.csv -f 5 -wi 100000 -i 10000 org.drools.benchmarks.operators.AlphaNodeRangeIndexingEMThresholdBenchmark
 

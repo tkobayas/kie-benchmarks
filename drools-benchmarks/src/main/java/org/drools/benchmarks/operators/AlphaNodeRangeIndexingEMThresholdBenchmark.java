@@ -15,6 +15,8 @@
 
 package org.drools.benchmarks.operators;
 
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +33,11 @@ import org.drools.core.reteoo.CompositeObjectSinkAdapter;
 import org.drools.core.reteoo.CompositeObjectSinkAdapter.FieldIndex;
 import org.drools.core.reteoo.ObjectTypeNode;
 import org.drools.core.util.index.AlphaRangeIndex;
-import org.kie.internal.conf.AlphaRangeIndexThresholdOption;
+import org.kie.api.KieServices;
+import org.kie.api.builder.ReleaseId;
+import org.kie.api.io.Resource;
+import org.kie.api.io.ResourceType;
+import org.kie.api.runtime.KieContainer;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
@@ -44,15 +50,20 @@ import org.openjdk.jmh.infra.Blackhole;
 @Warmup(iterations = 100000)
 @Measurement(iterations = 10000)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
-public class AlphaNodeRangeIndexingThresholdBenchmark extends AbstractBenchmark {
+public class AlphaNodeRangeIndexingEMThresholdBenchmark extends AbstractBenchmark {
 
     protected static final String RULENAME_PREFIX = "AccountBalance";
 
-    @Param({"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
+    @Param({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" })
+    //@Param({ "1", "2", "3" })
     protected int _sinkNum;
-    
-    @Param({"false", "true"})
+
+    @Param({ "false", "true" })
     protected boolean rangeIndexingEnabled;
+
+    @Param({ "false", "true" })
+    // @Param({"false"})
+    private boolean useCanonicalModel;
 
     private Set<Account> accounts;
 
@@ -67,7 +78,7 @@ public class AlphaNodeRangeIndexingThresholdBenchmark extends AbstractBenchmark 
     }
 
     @Setup
-    public void setupKieBase() {
+    public void setupKieBase() throws IOException {
 
         StringBuilder sb = new StringBuilder();
         sb.append( "import org.drools.benchmarks.model.*;\n" );
@@ -82,30 +93,39 @@ public class AlphaNodeRangeIndexingThresholdBenchmark extends AbstractBenchmark 
         //System.out.println(sb.toString());
 
         if (rangeIndexingEnabled) {
-            // use 1 because wanted to compare from minimal value (but actually, sink = 1 means SingleObjectSinkAdapter so there is no difference)
-            kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString(), AlphaRangeIndexThresholdOption.get(1));
+            System.setProperty("drools.alphaNodeRangeIndexThreshold", "1");
         } else {
-            kieBase = BuildtimeUtil.createKieBaseFromDrl(sb.toString(), AlphaRangeIndexThresholdOption.get(0));
+            System.setProperty("drools.alphaNodeRangeIndexThreshold", "0");
         }
 
-//        if (_sinkNum >= 2) {
-//            ObjectTypeNode otn = null;
-//            final List<ObjectTypeNode> nodes = ((KnowledgeBaseImpl) kieBase).getRete().getObjectTypeNodes();
-//            for (final ObjectTypeNode n : nodes) {
-//                if (((ClassObjectType) n.getObjectType()).getClassType() == Account.class) {
-//                    otn = n;
-//                }
-//            }
-//            final CompositeObjectSinkAdapter sinkAdapter = (CompositeObjectSinkAdapter) otn.getObjectSinkPropagator();
-//            Map<FieldIndex, AlphaRangeIndex> rangeIndexMap = sinkAdapter.getRangeIndexMap();
-//            if (rangeIndexMap == null) {
-//                System.out.println("rangeIndexMap is null");
-//            } else {
-//                System.out.println("rangeIndexMap size = " + rangeIndexMap.entrySet().iterator().next().getValue().size());
-//            }
-//        } else {
-//            System.out.println("SingleObjectSinkAdapter");
-//        }
+        Resource drlResource = KieServices.get().getResources()
+                                          .newReaderResource(new StringReader(sb.toString()))
+                                          .setResourceType(ResourceType.DRL)
+                                          .setSourcePath("drlFile.drl");
+
+        ReleaseId releaseId = BuildtimeUtil.createKJarFromResources(useCanonicalModel, drlResource);
+        KieContainer kieContainer = KieServices.get().newKieContainer(releaseId);
+
+        kieBase = kieContainer.getKieBase();
+
+    //    if (_sinkNum >= 2) {
+    //        ObjectTypeNode otn = null;
+    //        final List<ObjectTypeNode> nodes = ((KnowledgeBaseImpl) kieBase).getRete().getObjectTypeNodes();
+    //        for (final ObjectTypeNode n : nodes) {
+    //            if (((ClassObjectType) n.getObjectType()).getClassType() == Account.class) {
+    //                otn = n;
+    //            }
+    //        }
+    //        final CompositeObjectSinkAdapter sinkAdapter = (CompositeObjectSinkAdapter) otn.getObjectSinkPropagator();
+    //        Map<FieldIndex, AlphaRangeIndex> rangeIndexMap = sinkAdapter.getRangeIndexMap();
+    //        if (rangeIndexMap == null) {
+    //            System.out.println("rangeIndexMap is null");
+    //        } else {
+    //            System.out.println("rangeIndexMap size = " + rangeIndexMap.entrySet().iterator().next().getValue().size());
+    //        }
+    //    } else {
+    //        System.out.println("SingleObjectSinkAdapter");
+    //    }
     }
 
     @Setup(Level.Iteration)
@@ -120,7 +140,7 @@ public class AlphaNodeRangeIndexingThresholdBenchmark extends AbstractBenchmark 
             eater.consume(kieSession.insert(account));
         }
         int fired = kieSession.fireAllRules();
-//        System.out.println("fired = " + fired);
+    //    System.out.println("fired = " + fired);
         return fired;
     }
 }

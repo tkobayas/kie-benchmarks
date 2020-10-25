@@ -48,7 +48,7 @@ public class AlphaNodeRangeIndexingExecModelBenchmark extends AbstractOperatorsB
     //@Param({ "true" })
     protected boolean rangeIndexingEnabled;
 
-    @Param({ "true", "false" })
+    @Param({ "false", "true" })
     //@Param({"false"})
     private boolean useCanonicalModel;
 
