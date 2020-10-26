@@ -44,7 +44,7 @@ import org.openjdk.jmh.infra.Blackhole;
 @Warmup(iterations = 100000)
 @Measurement(iterations = 10000)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
-public class AlphaNodeRangeIndexingThresholdBenchmark2 extends AbstractBenchmark {
+public class AlphaNodeRangeIndexingThresholdBoundaryBenchmark extends AbstractBenchmark {
 
     protected static final String RULENAME_PREFIX = "AccountBalance";
 
@@ -60,10 +60,10 @@ public class AlphaNodeRangeIndexingThresholdBenchmark2 extends AbstractBenchmark
     public void generateFacts() {
         // Just two facts which matches 1 rule
         accounts = new HashSet<>();
-        final Account account1 = new Account();
-        account1.setBalance(15000);
-        account1.setName(RULENAME_PREFIX + 1);
-        accounts.add(account1);
+        // final Account account1 = new Account();
+        // account1.setBalance(15000);
+        // account1.setName(RULENAME_PREFIX + 1);
+        // accounts.add(account1);
 
         final Account account2 = new Account();
         account2.setBalance(10000);
