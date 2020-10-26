@@ -1,0 +1,23 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: _sinkNum","Param: rangeIndexingEnabled"
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.564925,0.043802,"us/op",2,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,7.004570,0.049927,"us/op",2,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,7.082453,0.209070,"us/op",3,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.970273,0.048011,"us/op",3,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.790629,0.040536,"us/op",4,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,7.065142,0.099657,"us/op",4,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.240708,0.031205,"us/op",5,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.240058,0.021654,"us/op",5,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.045451,0.041083,"us/op",6,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.174051,0.021841,"us/op",6,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.138345,0.062692,"us/op",7,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.241589,0.020656,"us/op",7,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.350526,0.024478,"us/op",8,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.490389,0.023164,"us/op",8,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.462210,0.023128,"us/op",9,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.353830,0.038147,"us/op",9,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.841816,0.027194,"us/op",10,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.545683,0.065873,"us/op",10,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.964596,0.048830,"us/op",11,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.691203,0.109491,"us/op",11,true
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,7.055337,0.033358,"us/op",12,false
+"org.drools.benchmarks.operators.AlphaNodeRangeIndexingThresholdBenchmark.test","ss",1,50000,6.461687,0.023334,"us/op",12,true
