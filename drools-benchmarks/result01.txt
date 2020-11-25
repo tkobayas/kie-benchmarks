@@ -1,0 +1,24 @@
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 2 -wi 100000 -i 10000 org.drools.benchmarks.operators.AlphaNodeRangeIndexingBenchmark
+
+# Run complete. Total time: 00:20:36
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                             (alphanetworkCompilerEnabled)  (rangeIndexingEnabled)  (rulesAndFactsNumber)  Mode    Cnt    Score   Error  Units
+AlphaNodeRangeIndexingBenchmark.test                          false                   false                     12    ss  20000   47.952 ± 0.342  us/op
+AlphaNodeRangeIndexingBenchmark.test                          false                   false                     24    ss  20000  133.599 ± 1.727  us/op
+AlphaNodeRangeIndexingBenchmark.test                          false                   false                     48    ss  20000  477.013 ± 2.687  us/op
+AlphaNodeRangeIndexingBenchmark.test                          false                    true                     12    ss  20000   42.489 ± 1.624  us/op
+AlphaNodeRangeIndexingBenchmark.test                          false                    true                     24    ss  20000  126.070 ± 0.855  us/op
+AlphaNodeRangeIndexingBenchmark.test                          false                    true                     48    ss  20000  391.990 ± 2.298  us/op
+AlphaNodeRangeIndexingBenchmark.test                           true                   false                     12    ss  20000   40.054 ± 0.372  us/op
+AlphaNodeRangeIndexingBenchmark.test                           true                   false                     24    ss  20000  112.956 ± 1.297  us/op
+AlphaNodeRangeIndexingBenchmark.test                           true                   false                     48    ss  20000  374.519 ± 1.768  us/op
+AlphaNodeRangeIndexingBenchmark.test                           true                    true                     12    ss  20000   39.906 ± 0.215  us/op
+AlphaNodeRangeIndexingBenchmark.test                           true                    true                     24    ss  20000  124.887 ± 0.501  us/op
+AlphaNodeRangeIndexingBenchmark.test                           true                    true                     48    ss  20000  347.360 ± 1.804  us/op
+
