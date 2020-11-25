@@ -141,6 +141,6 @@ public class Account {
     public String toString() {
         return "Account [number=" + number + ", name=" + name + ", balance=" + balance + ", currency=" +
                 currency + ", startDate=" + startDate + ", endDate=" + endDate + ", type=" + type + ", uuid=" +
-                uuid + ", interestRate=" + interestRate + ", status=" + status + ", owner=" + owner.getUuid() + "]";
+                uuid + ", interestRate=" + interestRate + ", status=" + status + ", owner=" + (owner != null ? owner.getUuid() : "null") + "]";
     }
 }

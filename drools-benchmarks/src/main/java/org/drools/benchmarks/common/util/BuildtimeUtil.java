@@ -41,6 +41,7 @@ import org.kie.api.conf.KieBaseOption;
 import org.kie.api.io.Resource;
 import org.kie.api.io.ResourceType;
 import org.kie.api.runtime.KieContainer;
+import org.kie.internal.builder.conf.KnowledgeBuilderOption;
 import org.kie.internal.utils.KieHelper;
 import org.openjdk.jmh.util.FileUtils;
 import org.slf4j.Logger;
@@ -145,6 +146,15 @@ public final class BuildtimeUtil {
         return kieBase;
     }
 
+    public static KieBase createKieBaseFromDrl(final String drl, final KieBaseConfiguration kieBaseConfiguration, KnowledgeBuilderOption... options) {
+        if (TestUtil.dumpDrl()) {
+            logDebug("Benchmark DRL", drl);
+        }
+        final KieBase kieBase = new KieHelper(options).addContent(drl, ResourceType.DRL).build(kieBaseConfiguration);
+        dumpReteIfNeeded(kieBase);
+        return kieBase;
+    }
+
     private static KieModuleModel getDefaultKieModuleModel(final KieServices ks) {
         final KieModuleModel kproj = ks.newKieModuleModel();
         final KieBaseModel kieBaseModel1 = kproj.newKieBaseModel("kbase").setDefault(true);
@@ -152,7 +162,7 @@ public final class BuildtimeUtil {
         return kproj;
     }
 
-    private static KieBaseConfiguration getKieBaseConfiguration(final KieBaseOption... kieBaseOptions) {
+    public static KieBaseConfiguration getKieBaseConfiguration(final KieBaseOption... kieBaseOptions) {
         final KieBaseConfiguration kieBaseConfiguration = KieServices.Factory.get().newKieBaseConfiguration();
         for (final KieBaseOption kieBaseOption : kieBaseOptions) {
             kieBaseConfiguration.setOption(kieBaseOption);
