@@ -40,7 +40,7 @@ public class TreeMapIntervalTreeBenchmark {
 
     private boolean isTreeMap = true;
 
-    @Param({"4", "8", "32", "64", "128", "256", "512"})
+    @Param({"4", "8", "32", "64", "128"})
     //@Param({"4", "8"})
     //@Param({"128"})
     protected int numOfInterval; // e.g. Account(balance >= 100 && balance < 200)
@@ -49,8 +49,7 @@ public class TreeMapIntervalTreeBenchmark {
 
     private IntervalTree tree;
 
-    //private Set<Account> accounts;
-    private Account account; // test only one fact per iteration
+    private Set<Account> accounts;
 
     @Setup
     public void setupTree() {
@@ -72,42 +71,54 @@ public class TreeMapIntervalTreeBenchmark {
                 String intervalString = "Interval [" + (i * 100) + ", " + (i + 1) * 100 + ")"; // dummy now
                 map.put(Long.valueOf(i * 100), intervalString);
             }
-            //System.out.println(map);
         } else {
             // IntervalTree
             for (int i = 1; i <= numOfInterval; i++) {
                 tree.add(new LongInterval(Long.valueOf(i * 100), Long.valueOf((i + 1) * 100), false, true));
             }
-            //System.out.println(tree);
         }
     }
 
     @Setup
     public void generateFacts() {
-        account = new Account();
-        account.setBalance(150);
-        account.setName("Account");
+        accounts = new HashSet<>();
+        for (int i = 1; i <= numOfInterval; i++) {
+            final Account account = new Account();
+            account.setBalance((i * 100) + 50);
+            account.setName("Account" + i);
+            accounts.add(account);
+        }
     }
 
     @Benchmark
-    public Object test(final Blackhole eater) {
-        Object interval;
+    public void test(final Blackhole eater) {
         if (isTreeMap) {
             // TreeMap
-            Comparable key = account.getBalance();
-            //System.out.println("key = " + key);
-            Entry<Comparable, String> floorEntry = map.floorEntry(key);
-            interval = floorEntry.getValue();
-            //System.out.println("  hit -> " + interval);
+            for (Account account : accounts) {
+                Comparable key = account.getBalance();
+                //System.out.println("key = " + key);
+                Entry<Comparable, String> floorEntry = map.floorEntry(key);
+                String interval = floorEntry.getValue();
+                eater.consume(interval); // do some work
+                //System.out.println("  hit -> " + interval);
+            }
         } else {
             // IntervalTree
-            Comparable key = account.getBalance();
-            //System.out.println("key = " + key);
-            Collection<IInterval> intervals = tree.overlap(new LongInterval((Long) key, (Long) key));
-            Iterator it = intervals.iterator();
-            interval = intervals.iterator().next();
-            //System.out.println("  hit -> " + interval);
+            for (Account account : accounts) {
+                Comparable key = account.getBalance();
+                //System.out.println("key = " + key);
+                Collection<IInterval> intervals = tree.overlap(new LongInterval((Long)key, (Long)key));
+                Iterator it = intervals.iterator();
+                if (it.hasNext()) {
+                    IInterval interval = intervals.iterator().next();
+                    eater.consume(interval); // do some work
+                    //System.out.println("  hit -> " + interval);
+                } else {
+                    throw new RuntimeException("EMPTY");
+                    //System.out.println(" EMPTY");
+                }
+
+            }
         }
-        return interval;
     }
 }
