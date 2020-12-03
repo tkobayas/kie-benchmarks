@@ -1,0 +1,15 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: numOfInterval","Param: treeImpl"
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,0.193486,0.017255,"us/op",4,TreeMap
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,5.679922,0.196178,"us/op",4,IntervalTree
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,0.202290,0.016733,"us/op",8,TreeMap
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,8.007540,0.583715,"us/op",8,IntervalTree
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,0.233247,0.021790,"us/op",32,TreeMap
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,11.482521,2.413184,"us/op",32,IntervalTree
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,0.251875,0.025559,"us/op",64,TreeMap
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,18.223972,0.563215,"us/op",64,IntervalTree
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,0.211054,0.014956,"us/op",128,TreeMap
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,38.902815,2.494800,"us/op",128,IntervalTree
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,0.269023,0.021592,"us/op",256,TreeMap
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,69.701299,1.109440,"us/op",256,IntervalTree
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,0.371315,0.301850,"us/op",512,TreeMap
+"org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark.test","ss",1,20000,127.256761,2.615291,"us/op",512,IntervalTree

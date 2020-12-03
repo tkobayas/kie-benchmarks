@@ -9,4 +9,7 @@ java -jar target/simple-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -
 
 java -jar target/simple-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results-bench.csv -f 1 -wi 1 -i 1 org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark
 
+
+java -jar target/simple-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results-bench.csv -f 2 -wi 100000 -i 10000 org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark
+
 java -jar target/simple-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results-bench.csv -f 5 -wi 100000 -i 10000 org.drools.benchmarks.operators.TreeMapIntervalTreeBenchmark
