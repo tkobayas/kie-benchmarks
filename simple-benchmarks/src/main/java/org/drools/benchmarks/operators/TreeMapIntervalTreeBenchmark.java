@@ -42,7 +42,7 @@ public class TreeMapIntervalTreeBenchmark {
 
     @Param({"4", "8", "32", "64", "128", "256", "512"})
     //@Param({"4", "8"})
-    //@Param({"128"})
+    //@Param({"256", "512"})
     protected int numOfInterval; // e.g. Account(balance >= 100 && balance < 200)
 
     private final TreeMap<Comparable, String> map = new TreeMap<>();
@@ -96,7 +96,7 @@ public class TreeMapIntervalTreeBenchmark {
             // TreeMap
             Comparable key = account.getBalance();
             //System.out.println("key = " + key);
-            Entry<Comparable, String> floorEntry = map.floorEntry(key);
+            Entry<Comparable, String> floorEntry = map.floorEntry(key); // floorEntry is enough because we can put a marker object in the map to judge (Start of interval / End of interval / Border of 2 intervals)
             interval = floorEntry.getValue();
             //System.out.println("  hit -> " + interval);
         } else {
