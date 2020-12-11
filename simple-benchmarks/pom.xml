@@ -15,15 +15,16 @@
   <dependencies>
 
     <dependency>
+      <groupId>org.drools</groupId>
+      <artifactId>drools-core</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>com.breinify</groupId>
       <artifactId>brein-time-utilities</artifactId>
       <version>1.7.0</version>
-      <!-- <exclusions>
-        <exclusion>
-          <groupId>log4j</groupId>
-          <artifactId>log4j</artifactId>
-        </exclusion>
-      </exclusions> -->
+      <!-- <exclusions> <exclusion> <groupId>log4j</groupId> <artifactId>log4j</artifactId> 
+        </exclusion> </exclusions> -->
     </dependency>
 
     <dependency>
@@ -73,40 +74,45 @@
       </plugin>
 
       <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-enforcer-plugin</artifactId>
-    <executions>
-            <execution>
-              <id>ban-blacklisted-dependencies</id>
-              <phase>validate</phase>
-              <goals>
-                <goal>enforce</goal>
-              </goals>
-              <configuration>
-                <rules>
-                  <bannedDependencies>
-                    <excludes>
-                      <!-- Ban blacklisted logging deps (we only use SLF4J + Logback) -->
-                      <!-- In case of transitive dependency, exclude it and use 'org.slf4j:jcl-over-slf4j' instead -->
-                      <exclude>commons-logging:commons-log*</exclude>
-                      <!-- In case of transitive dependency, exclude it and use 'org.slf4j:log4j-over-slf4j' instead -->
-                      <!-- <exclude>log4j:log4j</exclude> -->
-                      <!-- In case of transitive dependency, exclude it and use 'org.javassist:javassist' instead -->
-                      <exclude>javassist:javassist</exclude>
-                      <exclude>org.apache.cxf:cxf-bundle-jaxrs</exclude>
-                      <exclude>org.jboss.weld.se:weld-se
-                      </exclude><!-- Use weld-se-core instead -->
-                      <exclude>org.jboss.weld.servlet:weld-servlet
-                      </exclude><!-- Use weld-servlet-core instead -->
-                      <exclude>org.mockito:mockito-all</exclude><!-- Use mockito-core instead -->
-                    </excludes>
-                  </bannedDependencies>
-                </rules>
-                <fail>false</fail>
-              </configuration>
-            </execution>
-    </executions>
-</plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>ban-blacklisted-dependencies</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <bannedDependencies>
+                  <excludes>
+                    <!-- Ban blacklisted logging deps (we only use SLF4J 
+                      + Logback) -->
+                    <!-- In case of transitive dependency, exclude it and 
+                      use 'org.slf4j:jcl-over-slf4j' instead -->
+                    <exclude>commons-logging:commons-log*</exclude>
+                    <!-- In case of transitive dependency, exclude it and 
+                      use 'org.slf4j:log4j-over-slf4j' instead -->
+                    <!-- <exclude>log4j:log4j</exclude> -->
+                    <!-- In case of transitive dependency, exclude it and 
+                      use 'org.javassist:javassist' instead -->
+                    <exclude>javassist:javassist</exclude>
+                    <exclude>org.apache.cxf:cxf-bundle-jaxrs</exclude>
+                    <exclude>org.jboss.weld.se:weld-se
+                    </exclude><!-- Use weld-se-core instead -->
+                    <exclude>org.jboss.weld.servlet:weld-servlet
+                    </exclude><!-- Use weld-servlet-core instead -->
+                    <exclude>org.mockito:mockito-all</exclude><!-- Use mockito-core 
+                      instead -->
+                  </excludes>
+                </bannedDependencies>
+              </rules>
+              <fail>false</fail>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>
