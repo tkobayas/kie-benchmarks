@@ -1,0 +1,19 @@
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1 -i 1 org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 100 -i 100 org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 2 -wi 100000 -i 10000 org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results.csv org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark
+
+
+===
+
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1 -i 1 org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 100 -i 100 org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 2 -wi 100000 -i 10000 org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results.csv org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark
