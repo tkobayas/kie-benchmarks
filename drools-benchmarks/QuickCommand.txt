@@ -4,7 +4,7 @@ java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -
 
 java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 2 -wi 100000 -i 10000 org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark
 
-java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results.csv org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 2 -wi 100000 -i 10000 -rf csv -rff results-oneToMany.csv org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark
 
 
 ===
@@ -16,4 +16,4 @@ java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -
 
 java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 2 -wi 100000 -i 10000 org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark
 
-java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results.csv org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 2 -wi 100000 -i 10000 -rf csv -rff results-manyToMany.csv org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark

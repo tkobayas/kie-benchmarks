@@ -1,0 +1,9 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: accountNum","Param: rangeIndexEnabled","Param: transactionNum"
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark.test","ss",1,20000,76.694173,0.821824,"us/op",16,false,16
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark.test","ss",1,20000,1084.797420,5.025933,"us/op",16,false,256
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark.test","ss",1,20000,76.369493,0.533161,"us/op",16,true,16
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark.test","ss",1,20000,1439.229081,6.751701,"us/op",16,true,256
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark.test","ss",1,20000,291.461483,0.590574,"us/op",256,false,16
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark.test","ss",1,20000,13631.151356,45.950215,"us/op",256,false,256
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark.test","ss",1,20000,251.565192,0.507679,"us/op",256,true,16
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToManyBenchmark.test","ss",1,20000,10154.496151,34.029712,"us/op",256,true,256

@@ -1,0 +1,17 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit","Param: accountNum","Param: match","Param: rangeIndexEnabled","Param: transactionNum"
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,13.318640,0.223241,"us/op",1,One,false,1
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,94.699928,1.366225,"us/op",1,One,false,128
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,162.082806,0.756548,"us/op",1,One,false,256
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,621.923036,2.953211,"us/op",1,One,false,1024
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,13.607909,0.131829,"us/op",1,One,true,1
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,113.545922,0.838061,"us/op",1,One,true,128
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,208.397961,1.716050,"us/op",1,One,true,256
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,792.407086,3.103522,"us/op",1,One,true,1024
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,11.676980,0.109845,"us/op",1,Many,false,1
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,116.886094,0.627942,"us/op",1,Many,false,128
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,218.821837,1.027093,"us/op",1,Many,false,256
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,848.124476,3.882634,"us/op",1,Many,false,1024
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,10.490264,0.057463,"us/op",1,Many,true,1
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,143.871341,1.259268,"us/op",1,Many,true,128
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,263.387572,0.747218,"us/op",1,Many,true,256
+"org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark.test","ss",1,20000,1057.799490,1.594996,"us/op",1,Many,true,1024
