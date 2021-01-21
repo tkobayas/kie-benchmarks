@@ -39,15 +39,15 @@ import org.openjdk.jmh.infra.Blackhole;
 @Warmup(iterations = 100000)
 @Measurement(iterations = 10000)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
-public class JoinNodeRangeIndexingManyToManyBenchmark extends AbstractBenchmark {
+public class JoinNodeRangeIndexingFireRepeatBenchmark extends AbstractBenchmark {
 
     protected static final String ACCOUNT_PREFIX = "Account";
     protected static final String TRANSACTION_PREFIX = "Transaction";
 
-    @Param({"1", "16", "128", "256"})
+    @Param({"16", "128", "256"})
     protected int accountNum;
 
-    @Param({"1", "16", "128", "256"})
+    @Param({"16", "128", "256"})
     protected int transactionNum;
 
     @Param({"false", "true"})
@@ -105,17 +105,19 @@ public class JoinNodeRangeIndexingManyToManyBenchmark extends AbstractBenchmark 
         kieSession = RuntimeUtil.createKieSession(kieBase);
         List<Transaction> result = new ArrayList<>();
         kieSession.setGlobal("result", result);
+        for (Account account : accounts) {
+            kieSession.insert(account);
+        }
+        kieSession.fireAllRules();
     }
 
     @Benchmark
     public int test(final Blackhole eater) {
-        for (Account account : accounts) {
-            kieSession.insert(account);
-        }
+        int fired = 0;
         for (Transaction transaction : transactions) {
             kieSession.insert(transaction);
+            fired = kieSession.fireAllRules();
         }
-        int fired = kieSession.fireAllRules();
 //        System.out.println("fired = " + fired);
         return fired;
     }
