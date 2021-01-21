@@ -1,0 +1,150 @@
+Benchmark                                     (accountNum)  (match)  (rangeIndexEnabled)  (transactionNum)  Mode    Cnt     Score   Error  Units
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                false                 1    ss  20000    13.319 ± 0.223  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                 true                 1    ss  20000    13.608 ± 0.132  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                false               128    ss  20000    94.700 ± 1.366  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                 true               128    ss  20000   113.546 ± 0.838  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                false               256    ss  20000   162.083 ± 0.757  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                 true               256    ss  20000   208.398 ± 1.716  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                false              1024    ss  20000   621.923 ± 2.953  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                 true              1024    ss  20000   792.407 ± 3.104  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Many                false                 1    ss  20000    11.677 ± 0.110  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Many                 true                 1    ss  20000    10.490 ± 0.057  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Many                false               128    ss  20000   116.886 ± 0.628  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Many                 true               128    ss  20000   143.871 ± 1.259  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Many                false               256    ss  20000   218.822 ± 1.027  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Many                 true               256    ss  20000   263.388 ± 0.747  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Many                false              1024    ss  20000   848.124 ± 3.883  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Many                 true              1024    ss  20000  1057.799 ± 1.595  us/op
+
+
+===
+
+# Run complete. Total time: 00:35:30
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                     (accountNum)  (match)  (rangeIndexEnabled)  (transactionNum)  Mode    Cnt     Score   Error  Units
+JoinNodeRangeIndexingManyToOneBenchmark.test             1      One                false                 1    ss  20000    12.878 ± 0.140  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test             1      One                 true                 1    ss  20000    13.880 ± 0.152  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test           128      One                false                 1    ss  20000   107.286 ± 0.990  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test           128      One                 true                 1    ss  20000   125.887 ± 0.906  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test           256      One                false                 1    ss  20000   188.059 ± 0.830  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test           256      One                 true                 1    ss  20000   226.103 ± 1.044  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test          1024      One                false                 1    ss  20000   641.412 ± 0.921  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test          1024      One                 true                 1    ss  20000   837.473 ± 1.113  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test             1     Most                false                 1    ss  20000    11.576 ± 0.118  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test             1     Most                 true                 1    ss  20000    11.981 ± 0.121  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test           128     Most                false                 1    ss  20000   129.609 ± 0.640  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test           128     Most                 true                 1    ss  20000   154.751 ± 0.832  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test           256     Most                false                 1    ss  20000   243.092 ± 1.151  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test           256     Most                 true                 1    ss  20000   286.180 ± 1.342  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test          1024     Most                false                 1    ss  20000   876.493 ± 1.377  us/op
+JoinNodeRangeIndexingManyToOneBenchmark.test          1024     Most                 true                 1    ss  20000  1107.362 ± 1.872  us/op
+
+
+===
+
+# Run complete. Total time: 01:49:45
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                      (accountNum)  (rangeIndexEnabled)  (transactionNum)  Mode    Cnt      Score    Error  Units
+JoinNodeRangeIndexingManyToManyBenchmark.test            16                false                16    ss  20000     76.694 ±  0.822  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test            16                 true                16    ss  20000     76.369 ±  0.533  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test            16                false               256    ss  20000   1084.797 ±  5.026  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test            16                 true               256    ss  20000   1439.229 ±  6.752  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           256                false                16    ss  20000    291.461 ±  0.591  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           256                 true                16    ss  20000    251.565 ±  0.508  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           256                false               256    ss  20000  13631.151 ± 45.950  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           256                 true               256    ss  20000  10154.496 ± 34.030  us/op
+
+Benchmark result is saved to results-manyToMany.csv
+
+
+=====
+
+# Run complete. Total time: 00:44:32
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                     (accountNum)  (match)  (rangeIndexEnabled)  (transactionNum)  Mode   Cnt      Score     Error  Units
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                false                 1    ss  2000     53.550 ±   7.696  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                false               256    ss  2000    221.756 ±   9.312  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                false              1024    ss  2000    761.370 ±  16.337  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                false              4096    ss  2000   2848.099 ±  38.043  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                false             16384    ss  2000  12513.823 ± 109.066  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                 true                 1    ss  2000     50.611 ±   4.438  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                 true               256    ss  2000    256.294 ±   5.437  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                 true              1024    ss  2000    853.714 ±  12.552  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                 true              4096    ss  2000   3630.375 ±  42.956  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1      One                 true             16384    ss  2000  19248.936 ± 137.367  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Most                false                 1    ss  2000     30.482 ±   1.999  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Most                false               256    ss  2000    243.188 ±   4.090  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Most                false              1024    ss  2000    810.404 ±   5.771  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Most                false              4096    ss  2000   3365.834 ±  32.967  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Most                false             16384    ss  2000  19454.108 ±  52.424  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Most                 true                 1    ss  2000     34.823 ±   0.706  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Most                 true               256    ss  2000    340.383 ±   6.243  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Most                 true              1024    ss  2000   1216.581 ±  17.590  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Most                 true              4096    ss  2000   5083.676 ±  31.762  us/op
+JoinNodeRangeIndexingOneToManyBenchmark.test             1     Most                 true             16384    ss  2000  32486.587 ±  57.575  us/op
+
+
+======
+
+
+# Run complete. Total time: 02:13:44
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                      (accountNum)  (rangeIndexEnabled)  (transactionNum)  Mode    Cnt      Score    Error  Units
+JoinNodeRangeIndexingManyToManyBenchmark.test             1                false                 1    ss  10000     11.593 ±  0.174  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test             1                false                16    ss  10000     29.040 ±  0.332  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test             1                false               128    ss  10000    126.202 ±  1.477  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test             1                false               256    ss  10000    238.043 ±  2.481  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test             1                 true                 1    ss  10000     12.642 ±  0.186  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test             1                 true                16    ss  10000     31.300 ±  0.342  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test             1                 true               128    ss  10000    151.266 ±  1.193  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test             1                 true               256    ss  10000    316.542 ±  3.811  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test            16                false                 1    ss  10000     23.858 ±  0.247  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test            16                false                16    ss  10000     79.765 ±  1.306  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test            16                false               128    ss  10000    528.586 ±  3.501  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test            16                false               256    ss  10000   1064.100 ±  7.322  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test            16                 true                 1    ss  10000     24.906 ±  0.275  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test            16                 true                16    ss  10000     73.394 ±  0.649  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test            16                 true               128    ss  10000    603.567 ±  1.568  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test            16                 true               256    ss  10000   1276.377 ±  3.433  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           128                false                 1    ss  10000     91.213 ±  1.331  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           128                false                16    ss  10000    173.279 ±  0.657  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           128                false               128    ss  10000   3171.807 ± 24.947  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           128                false               256    ss  10000   9782.818 ± 29.416  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           128                 true                 1    ss  10000    104.051 ±  0.541  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           128                 true                16    ss  10000    168.444 ±  1.403  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           128                 true               128    ss  10000   2270.057 ±  9.151  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           128                 true               256    ss  10000   7787.392 ± 31.431  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           256                false                 1    ss  10000    173.594 ±  2.037  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           256                false                16    ss  10000    321.573 ±  2.644  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           256                false               128    ss  10000   3181.865 ± 29.932  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           256                false               256    ss  10000  14638.531 ± 75.807  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           256                 true                 1    ss  10000    208.540 ±  1.848  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           256                 true                16    ss  10000    283.784 ±  1.946  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           256                 true               128    ss  10000   2343.300 ±  4.256  us/op
+JoinNodeRangeIndexingManyToManyBenchmark.test           256                 true               256    ss  10000  10970.663 ± 45.314  us/op
+
+
