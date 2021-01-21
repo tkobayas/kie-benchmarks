@@ -39,15 +39,16 @@ import org.openjdk.jmh.infra.Blackhole;
 @Warmup(iterations = 100000)
 @Measurement(iterations = 10000)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
-public class JoinNodeRangeIndexingOneToManyBenchmark extends AbstractBenchmark {
+public class JoinNodeRangeIndexingManyToOneBenchmark extends AbstractBenchmark {
 
     protected static final String ACCOUNT_PREFIX = "Account";
     protected static final String TRANSACTION_PREFIX = "Transaction";
 
-    @Param({"1"})
+    @Param({"1", "128", "256", "1024"})
+//    @Param({"1", "4", "8"})
     protected int accountNum;
 
-    @Param({"1", "128", "256", "1024"})
+    @Param({"1"})
     protected int transactionNum;
 
     @Param({"false", "true"})
@@ -64,11 +65,11 @@ public class JoinNodeRangeIndexingOneToManyBenchmark extends AbstractBenchmark {
 
         String matchPattern;
         if (match.equals("One")) {
-            // hit only one Transaction
-            matchPattern = "     $t : Transaction(amount <= $a.balance)\n ";
+            // hit only one Amount
+            matchPattern = "     $t : Transaction(amount >= $a.balance)\n ";
         } else {
-            // hit most of Transactions
-            matchPattern = "     $t : Transaction(amount > $a.balance)\n ";
+            // hit most of Amount
+            matchPattern = "     $t : Transaction(amount < $a.balance)\n ";
         }
 
         String drl = "import org.drools.benchmarks.model.*;\n" +

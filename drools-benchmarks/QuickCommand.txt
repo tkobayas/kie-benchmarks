@@ -6,6 +6,17 @@ java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 2 -
 
 java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 2 -wi 100000 -i 10000 -rf csv -rff results-oneToMany.csv org.drools.benchmarks.operators.JoinNodeRangeIndexingOneToManyBenchmark
 
+===
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1 -i 1 org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToOneBenchmark
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 100 -i 100 org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToOneBenchmark
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 2 -wi 100000 -i 10000 org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToOneBenchmark
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 2 -wi 100000 -i 10000 -rf csv -rff results-manyToMany.csv org.drools.benchmarks.operators.JoinNodeRangeIndexingManyToOneBenchmark
+
+
 
 ===
 
