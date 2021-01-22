@@ -46,11 +46,11 @@ public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark 
     protected static final String ACCOUNT_PREFIX = "Account";
     protected static final String TRANSACTION_PREFIX = "Transaction";
 
-    @Param({"1", "16", "128", "256"})
+    @Param({"1", "16", "128"})
 //    @Param({"1", "8"})
     protected int _accountNum;
 
-    @Param({"1", "16", "128", "256"})
+    @Param({"1", "16", "128"})
 //    @Param({"1", "8"})
     protected int _transactionNum;
 
