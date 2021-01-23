@@ -64,4 +64,67 @@ JoinNodeRangeIndexingUpdateLeftBenchmark.test            128                128 
 
 ===
 
+# Run complete. Total time: 00:58:03
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                       (_accountNum)  (_transactionNum)  (match)  (rangeIndexEnabled)  Mode   Cnt     Score    Error  Units
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                  1      One                false    ss  4000     5.370 ±  0.158  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                  1      One                 true    ss  4000     5.146 ±  0.096  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                  1     Half                false    ss  4000     3.885 ±  0.107  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                  1     Half                 true    ss  4000     4.207 ±  0.148  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                  1      All                false    ss  4000     5.535 ±  0.243  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                  1      All                 true    ss  4000     5.436 ±  0.147  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                 16      One                false    ss  4000     5.302 ±  0.183  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                 16      One                 true    ss  4000     6.093 ±  0.161  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                 16     Half                false    ss  4000     7.033 ±  0.494  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                 16     Half                 true    ss  4000     9.759 ±  0.228  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                 16      All                false    ss  4000     8.305 ±  0.182  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                 16      All                 true    ss  4000    12.646 ±  0.309  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                128      One                false    ss  4000     6.750 ±  0.152  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                128      One                 true    ss  4000     5.823 ±  0.144  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                128     Half                false    ss  4000    18.568 ±  0.750  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                128     Half                 true    ss  4000    29.533 ±  0.537  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                128      All                false    ss  4000    29.689 ±  0.470  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test              1                128      All                 true    ss  4000    56.428 ±  0.769  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                  1      One                false    ss  4000    20.871 ±  5.338  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                  1      One                 true    ss  4000    19.198 ±  0.549  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                  1     Half                false    ss  4000    11.434 ±  0.218  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                  1     Half                 true    ss  4000    12.012 ±  0.219  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                  1      All                false    ss  4000    18.473 ±  0.273  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                  1      All                 true    ss  4000    21.034 ±  3.309  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                 16      One                false    ss  4000    22.964 ±  0.401  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                 16      One                 true    ss  4000    22.071 ±  3.509  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                 16     Half                false    ss  4000    53.223 ±  0.704  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                 16     Half                 true    ss  4000    68.270 ±  0.982  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                 16      All                false    ss  4000    64.187 ±  0.719  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                 16      All                 true    ss  4000   118.010 ±  1.517  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                128      One                false    ss  4000    45.862 ±  0.382  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                128      One                 true    ss  4000    21.499 ±  0.280  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                128     Half                false    ss  4000   209.887 ±  0.977  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                128     Half                 true    ss  4000   400.854 ±  4.863  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                128      All                false    ss  4000   410.706 ±  5.035  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test             16                128      All                 true    ss  4000   802.914 ±  5.323  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                  1      One                false    ss  4000   104.110 ±  0.555  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                  1      One                 true    ss  4000   111.444 ±  0.793  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                  1     Half                false    ss  4000    57.369 ±  0.484  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                  1     Half                 true    ss  4000    61.371 ±  0.511  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                  1      All                false    ss  4000   101.444 ±  0.655  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                  1      All                 true    ss  4000   114.861 ±  1.027  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                 16      One                false    ss  4000   150.475 ±  1.357  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                 16      One                 true    ss  4000   119.613 ±  1.097  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                 16     Half                false    ss  4000   348.824 ±  1.715  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                 16     Half                 true    ss  4000   399.180 ±  2.902  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                 16      All                false    ss  4000   475.693 ±  4.485  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                 16      All                 true    ss  4000   789.954 ±  5.107  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                128      One                false    ss  4000   329.484 ±  1.594  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                128      One                 true    ss  4000   126.914 ±  0.787  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                128     Half                false    ss  4000  2446.702 ± 22.684  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                128     Half                 true    ss  4000  3084.697 ±  9.985  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                128      All                false    ss  4000  6012.862 ± 21.606  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark.test            128                128      All                 true    ss  4000  6341.825 ± 13.056  us/op
 

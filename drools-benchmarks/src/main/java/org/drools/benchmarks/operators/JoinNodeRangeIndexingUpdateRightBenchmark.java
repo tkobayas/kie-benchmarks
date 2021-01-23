@@ -81,7 +81,7 @@ public class JoinNodeRangeIndexingUpdateRightBenchmark extends AbstractBenchmark
                      "     $a : Account()\n " +
                      "     $t : Transaction(amount > $a.balance)\n " +
                      " then\n " +
-                     "     System.out.println(\"Account : \" + $a.getName() + \" [\" + $a.getBalance() + \"], Transaction : \" + $t.getDescription() + \" [\" + $t.getAmount() +\"]\" );\n" +
+                    //  "     System.out.println(\"Account : \" + $a.getName() + \" [\" + $a.getBalance() + \"], Transaction : \" + $t.getDescription() + \" [\" + $t.getAmount() +\"]\" );\n" +
                      "     result.add($t);\n" +
                      " end\n";
 
@@ -138,7 +138,7 @@ public class JoinNodeRangeIndexingUpdateRightBenchmark extends AbstractBenchmark
         
         // Make sure fire once
         kieSession.fireAllRules();
-        System.out.println("---> setup done\n");
+        // System.out.println("---> setup done\n");
     }
 
     @Benchmark
