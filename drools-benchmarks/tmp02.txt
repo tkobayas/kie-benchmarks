@@ -385,3 +385,125 @@ JoinNodeRangeIndexingUpdateRightBenchmark2.test              8                 3
 
 ===
 
+* more iterations
+
+# Run complete. Total time: 00:35:23
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                       (_accountNum)  (_transactionNum)  (match)  (rangeIndexEnabled)  Mode    Cnt   Score   Error  Units
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  1      One                false    ss  10000   4.928 ± 0.118  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  1      One                 true    ss  10000   5.284 ± 0.073  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  1     Half                false    ss  10000   5.709 ± 0.072  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  1     Half                 true    ss  10000   7.643 ± 0.104  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  1      All                false    ss  10000   7.070 ± 0.094  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  1      All                 true    ss  10000   8.908 ± 0.197  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  2      One                false    ss  10000   5.945 ± 0.079  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  2      One                 true    ss  10000   5.937 ± 0.092  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  2     Half                false    ss  10000   9.148 ± 0.195  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  2     Half                 true    ss  10000   9.863 ± 0.115  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  2      All                false    ss  10000  13.353 ± 0.140  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  2      All                 true    ss  10000  14.061 ± 0.151  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  4      One                false    ss  10000   7.443 ± 0.098  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  4      One                 true    ss  10000   7.189 ± 0.084  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  4     Half                false    ss  10000  14.102 ± 0.139  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  4     Half                 true    ss  10000  15.294 ± 0.156  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  4      All                false    ss  10000  22.757 ± 1.061  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  4      All                 true    ss  10000  23.015 ± 0.218  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  8      One                false    ss  10000  11.380 ± 0.128  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  8      One                 true    ss  10000  10.625 ± 0.097  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  8     Half                false    ss  10000  22.235 ± 0.119  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  8     Half                 true    ss  10000  21.809 ± 0.124  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  8      All                false    ss  10000  37.641 ± 0.181  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             16                  8      All                 true    ss  10000  36.536 ± 0.370  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  1      One                false    ss  10000   3.618 ± 0.030  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  1      One                 true    ss  10000   4.901 ± 0.037  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  1     Half                false    ss  10000   6.449 ± 0.053  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  1     Half                 true    ss  10000   7.963 ± 0.055  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  1      All                false    ss  10000   8.726 ± 0.053  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  1      All                 true    ss  10000  12.009 ± 0.083  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  2      One                false    ss  10000   4.950 ± 0.053  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  2      One                 true    ss  10000   5.204 ± 0.042  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  2     Half                false    ss  10000  12.602 ± 0.073  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  2     Half                 true    ss  10000  12.975 ± 0.087  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  2      All                false    ss  10000  19.105 ± 0.097  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  2      All                 true    ss  10000  20.962 ± 0.135  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  4      One                false    ss  10000   7.758 ± 0.059  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  4      One                 true    ss  10000   6.734 ± 0.050  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  4     Half                false    ss  10000  20.859 ± 0.109  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  4     Half                 true    ss  10000  20.687 ± 0.129  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  4      All                false    ss  10000  35.288 ± 0.177  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  4      All                 true    ss  10000  36.384 ± 0.213  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  8      One                false    ss  10000  12.205 ± 0.084  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  8      One                 true    ss  10000   9.895 ± 0.070  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  8     Half                false    ss  10000  38.215 ± 0.183  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  8     Half                 true    ss  10000  38.610 ± 0.199  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  8      All                false    ss  10000  51.443 ± 0.224  us/op
+JoinNodeRangeIndexingUpdateLeftBenchmark2.test             32                  8      All                 true    ss  10000  77.933 ± 1.156  us/op
+
+====
+
+** thought: index still slow with 32*2 <- for non-index, number of combination matters more..?
+
+# Run complete. Total time: 00:35:16
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                        (_accountNum)  (_transactionNum)  (match)  (rangeIndexEnabled)  Mode    Cnt   Score   Error  Units
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              1                 16      One                false    ss  10000   4.488 ± 0.063  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              1                 16      One                 true    ss  10000   5.259 ± 0.102  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              1                 16     Half                false    ss  10000   6.779 ± 0.116  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              1                 16     Half                 true    ss  10000   8.521 ± 0.103  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              1                 16      All                false    ss  10000   7.383 ± 0.088  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              1                 16      All                 true    ss  10000  12.388 ± 0.145  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              1                 32      One                false    ss  10000   4.485 ± 0.080  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              1                 32      One                 true    ss  10000   4.720 ± 0.069  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              1                 32     Half                false    ss  10000   7.809 ± 0.110  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              1                 32     Half                 true    ss  10000  11.745 ± 0.129  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              1                 32      All                false    ss  10000  10.809 ± 0.119  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              1                 32      All                 true    ss  10000  19.133 ± 0.224  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              2                 16      One                false    ss  10000   5.965 ± 0.084  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              2                 16      One                 true    ss  10000   6.895 ± 0.103  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              2                 16     Half                false    ss  10000   9.974 ± 0.157  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              2                 16     Half                 true    ss  10000  13.590 ± 0.163  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              2                 16      All                false    ss  10000  13.830 ± 0.148  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              2                 16      All                 true    ss  10000  18.594 ± 0.209  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              2                 32      One                false    ss  10000   6.933 ± 0.109  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              2                 32      One                 true    ss  10000   6.822 ± 0.093  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              2                 32     Half                false    ss  10000  12.911 ± 0.077  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              2                 32     Half                 true    ss  10000  18.119 ± 0.126  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              2                 32      All                false    ss  10000  19.330 ± 0.093  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              2                 32      All                 true    ss  10000  27.088 ± 0.154  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              4                 16      One                false    ss  10000   7.604 ± 0.057  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              4                 16      One                 true    ss  10000   7.262 ± 0.052  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              4                 16     Half                false    ss  10000  13.982 ± 0.084  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              4                 16     Half                 true    ss  10000  16.924 ± 0.113  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              4                 16      All                false    ss  10000  20.930 ± 0.100  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              4                 16      All                 true    ss  10000  28.178 ± 1.075  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              4                 32      One                false    ss  10000   8.187 ± 0.055  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              4                 32      One                 true    ss  10000   7.292 ± 0.052  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              4                 32     Half                false    ss  10000  21.279 ± 0.101  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              4                 32     Half                 true    ss  10000  27.587 ± 0.183  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              4                 32      All                false    ss  10000  36.027 ± 0.210  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              4                 32      All                 true    ss  10000  50.294 ± 0.296  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              8                 16      One                false    ss  10000  11.438 ± 0.065  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              8                 16      One                 true    ss  10000  11.548 ± 0.073  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              8                 16     Half                false    ss  10000  23.672 ± 0.123  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              8                 16     Half                 true    ss  10000  29.013 ± 0.165  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              8                 16      All                false    ss  10000  38.481 ± 0.167  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              8                 16      All                 true    ss  10000  47.226 ± 0.233  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              8                 32      One                false    ss  10000  13.514 ± 0.078  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              8                 32      One                 true    ss  10000  11.298 ± 0.067  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              8                 32     Half                false    ss  10000  39.469 ± 0.200  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              8                 32     Half                 true    ss  10000  53.946 ± 0.356  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              8                 32      All                false    ss  10000  53.542 ± 0.279  us/op
+JoinNodeRangeIndexingUpdateRightBenchmark2.test              8                 32      All                 true    ss  10000  91.573 ± 0.426  us/op
+
