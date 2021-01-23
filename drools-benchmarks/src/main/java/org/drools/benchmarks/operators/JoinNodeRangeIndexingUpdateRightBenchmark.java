@@ -66,10 +66,8 @@ public class JoinNodeRangeIndexingUpdateRightBenchmark extends AbstractBenchmark
     private List<Transaction> transactions;
 
     private List<InternalFactHandle> accountHandles;
-//    private List<InternalFactHandle> transactionHandles;
 
-//    private double maxBalance;
-    private double maxAmount;
+    private double updateValue;
     
     @Setup
     public void setupKieBase() {
@@ -81,7 +79,7 @@ public class JoinNodeRangeIndexingUpdateRightBenchmark extends AbstractBenchmark
                      "     $a : Account()\n " +
                      "     $t : Transaction(amount > $a.balance)\n " +
                      " then\n " +
-                    //  "     System.out.println(\"Account : \" + $a.getName() + \" [\" + $a.getBalance() + \"], Transaction : \" + $t.getDescription() + \" [\" + $t.getAmount() +\"]\" );\n" +
+//                      "     System.out.println(\"Account : \" + $a.getName() + \" [\" + $a.getBalance() + \"], Transaction : \" + $t.getDescription() + \" [\" + $t.getAmount() +\"]\" );\n" +
                      "     result.add($t);\n" +
                      " end\n";
 
@@ -104,8 +102,6 @@ public class JoinNodeRangeIndexingUpdateRightBenchmark extends AbstractBenchmark
             account.setName(ACCOUNT_PREFIX + i);
             accounts.add(account);
         }
-//        maxBalance = _accountNum * 10000d;
-        
 
         transactions = new ArrayList<>();
         for (int i = 1; i <= _transactionNum; i++) {
@@ -114,7 +110,18 @@ public class JoinNodeRangeIndexingUpdateRightBenchmark extends AbstractBenchmark
             transaction.setDescription(TRANSACTION_PREFIX + i);
             transactions.add(transaction);
         }
-        maxAmount = _transactionNum * 10000d;
+        
+        double maxAmount = _transactionNum * 10000d;
+        
+        if (match.equals("One")) {
+            updateValue = (maxAmount - 5000d); // match only one Transaction
+        } else if (match.equals("Half")) {
+            updateValue = (maxAmount / 2 + 5000d); // match half of the Transactions
+        } else if (match.equals("All")) {
+            updateValue = (5000d); // match all Transactions
+        } else {
+            throw new RuntimeException("Wrong match value");
+        }
     }
 
     @Setup(Level.Iteration)
@@ -130,30 +137,21 @@ public class JoinNodeRangeIndexingUpdateRightBenchmark extends AbstractBenchmark
             InternalFactHandle handle = (InternalFactHandle)kieSession.insert(account);
             accountHandles.add(handle);
         }
-//        transactionHandles = new ArrayList<>();
         for (Transaction transaction : transactions) {
-            InternalFactHandle handle = (InternalFactHandle)kieSession.insert(transaction);
-//            transactionHandles.add(handle);
+            kieSession.insert(transaction);
         }
         
         // Make sure fire once
         kieSession.fireAllRules();
-        // System.out.println("---> setup done\n");
+//         System.out.println("---> setup done\n");
     }
 
     @Benchmark
     public int test(final Blackhole eater) {
+        // benchmark Account update
         for (InternalFactHandle handle : accountHandles) {
             Account account = (Account)handle.getObject();
-            if (match.equals("One")) {
-                account.setBalance(maxAmount - 5000d); // match only one Transaction
-            } else if (match.equals("Half")) {
-                account.setBalance(maxAmount / 2 + 5000d); // match half of the Transactions
-            } else if (match.equals("All")) {
-                account.setBalance(5000d); // match all Transactions
-            } else {
-                throw new RuntimeException("Wrong match value");
-            }
+            account.setBalance(updateValue);
             kieSession.update(handle, account);
         }
         int fired = kieSession.fireAllRules();

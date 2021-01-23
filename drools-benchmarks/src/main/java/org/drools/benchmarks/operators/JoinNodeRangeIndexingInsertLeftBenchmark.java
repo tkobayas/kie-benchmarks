@@ -41,7 +41,7 @@ import org.openjdk.jmh.infra.Blackhole;
 @Warmup(iterations = 100000)
 @Measurement(iterations = 10000)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
-public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark {
+public class JoinNodeRangeIndexingInsertLeftBenchmark extends AbstractBenchmark {
 
     protected static final String ACCOUNT_PREFIX = "Account";
     protected static final String TRANSACTION_PREFIX = "Transaction";
@@ -65,9 +65,7 @@ public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark 
     private List<Account> accounts;
     private List<Transaction> transactions;
 
-    private List<InternalFactHandle> transactionHandles;
-
-    private double updateValue;
+    private double insertValue;
     
     @Setup
     public void setupKieBase() {
@@ -104,22 +102,22 @@ public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark 
         }
         double maxBalance = _accountNum * 10000d;
 
+        if (match.equals("One")) {
+            insertValue = 15000d; // match only one Account
+        } else if (match.equals("Half")) {
+            insertValue = (maxBalance / 2 + 5000d); // match half of the Accounts
+        } else if (match.equals("All")) {
+            insertValue = (maxBalance + 5000d); // match all Accounts
+        } else {
+            throw new RuntimeException("Wrong match value");
+        }
+        
         transactions = new ArrayList<>();
         for (int i = 1; i <= _transactionNum; i++) {
             final Transaction transaction = new Transaction();
-            transaction.setAmount(i * 10000d);
+            transaction.setAmount(insertValue);
             transaction.setDescription(TRANSACTION_PREFIX + i);
             transactions.add(transaction);
-        }
-        
-        if (match.equals("One")) {
-            updateValue = 15000d; // match only one Account
-        } else if (match.equals("Half")) {
-            updateValue = (maxBalance / 2 + 5000d); // match half of the Accounts
-        } else if (match.equals("All")) {
-            updateValue = (maxBalance + 5000d); // match all Accounts
-        } else {
-            throw new RuntimeException("Wrong match value");
         }
     }
 
@@ -130,16 +128,11 @@ public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark 
         List<Transaction> result = new ArrayList<>();
         kieSession.setGlobal("result", result);
         
-        // Insert everything first
+        // Insert all Account first
         for (Account account : accounts) {
             kieSession.insert(account);
         }
-        transactionHandles = new ArrayList<>();
-        for (Transaction transaction : transactions) {
-            InternalFactHandle handle = (InternalFactHandle)kieSession.insert(transaction);
-            transactionHandles.add(handle);
-        }
-        
+
         // Make sure fire once
         kieSession.fireAllRules();
 //        System.out.println("---> setup done\n");
@@ -147,12 +140,11 @@ public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark 
 
     @Benchmark
     public int test(final Blackhole eater) {
-        // benchmark Transaction update
-        for (InternalFactHandle handle : transactionHandles) {
-            Transaction transaction = (Transaction)handle.getObject();
-            transaction.setAmount(updateValue);
-            kieSession.update(handle, transaction);
+        // benchmark Transaction insert
+        for (Transaction transaction : transactions) {
+            kieSession.insert(transaction);
         }
+
         int fired = kieSession.fireAllRules();
 //        System.out.println("fired = " + fired);
         return fired;

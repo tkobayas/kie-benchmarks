@@ -41,7 +41,7 @@ import org.openjdk.jmh.infra.Blackhole;
 @Warmup(iterations = 100000)
 @Measurement(iterations = 10000)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
-public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark {
+public class JoinNodeRangeIndexingInsertRightBenchmark extends AbstractBenchmark {
 
     protected static final String ACCOUNT_PREFIX = "Account";
     protected static final String TRANSACTION_PREFIX = "Transaction";
@@ -65,9 +65,7 @@ public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark 
     private List<Account> accounts;
     private List<Transaction> transactions;
 
-    private List<InternalFactHandle> transactionHandles;
-
-    private double updateValue;
+    private double insertValue;
     
     @Setup
     public void setupKieBase() {
@@ -95,14 +93,6 @@ public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark 
 
     @Setup
     public void generateFacts() {
-        accounts = new ArrayList<>();
-        for (int i = 1; i <= _accountNum; i++) {
-            final Account account = new Account();
-            account.setBalance(i * 10000d);
-            account.setName(ACCOUNT_PREFIX + i);
-            accounts.add(account);
-        }
-        double maxBalance = _accountNum * 10000d;
 
         transactions = new ArrayList<>();
         for (int i = 1; i <= _transactionNum; i++) {
@@ -111,15 +101,25 @@ public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark 
             transaction.setDescription(TRANSACTION_PREFIX + i);
             transactions.add(transaction);
         }
+
+        double maxAmount = _transactionNum * 10000d;
         
         if (match.equals("One")) {
-            updateValue = 15000d; // match only one Account
+            insertValue = (maxAmount - 5000d); // match only one Transaction
         } else if (match.equals("Half")) {
-            updateValue = (maxBalance / 2 + 5000d); // match half of the Accounts
+            insertValue = (maxAmount / 2 + 5000d); // match half of the Transactions
         } else if (match.equals("All")) {
-            updateValue = (maxBalance + 5000d); // match all Accounts
+            insertValue = (5000d); // match all Transactions
         } else {
             throw new RuntimeException("Wrong match value");
+        }
+        
+        accounts = new ArrayList<>();
+        for (int i = 1; i <= _accountNum; i++) {
+            final Account account = new Account();
+            account.setBalance(insertValue);
+            account.setName(ACCOUNT_PREFIX + i);
+            accounts.add(account);
         }
     }
 
@@ -130,16 +130,11 @@ public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark 
         List<Transaction> result = new ArrayList<>();
         kieSession.setGlobal("result", result);
         
-        // Insert everything first
-        for (Account account : accounts) {
-            kieSession.insert(account);
-        }
-        transactionHandles = new ArrayList<>();
+        // Insert all Transactions first
         for (Transaction transaction : transactions) {
-            InternalFactHandle handle = (InternalFactHandle)kieSession.insert(transaction);
-            transactionHandles.add(handle);
+            kieSession.insert(transaction);
         }
-        
+
         // Make sure fire once
         kieSession.fireAllRules();
 //        System.out.println("---> setup done\n");
@@ -147,12 +142,11 @@ public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark 
 
     @Benchmark
     public int test(final Blackhole eater) {
-        // benchmark Transaction update
-        for (InternalFactHandle handle : transactionHandles) {
-            Transaction transaction = (Transaction)handle.getObject();
-            transaction.setAmount(updateValue);
-            kieSession.update(handle, transaction);
+        // benchmark Account insert
+        for (Account account : accounts) {
+            kieSession.insert(account);
         }
+
         int fired = kieSession.fireAllRules();
 //        System.out.println("fired = " + fired);
         return fired;
