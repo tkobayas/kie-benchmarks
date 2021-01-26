@@ -28,6 +28,8 @@ import org.drools.benchmarks.model.Account;
 import org.drools.benchmarks.model.Transaction;
 import org.drools.core.common.InternalFactHandle;
 import org.drools.core.util.index.IndexTestUtil;
+import org.kie.api.conf.BetaRangeIndexOption;
+import org.kie.api.conf.KieBaseOption;
 import org.kie.api.runtime.rule.FactHandle;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
@@ -83,12 +85,13 @@ public class JoinNodeRangeIndexingInsertLeftBenchmark extends AbstractBenchmark 
 
 //        System.out.println(drl);
 
+        KieBaseOption kieBaseOption;
         if (rangeIndexEnabled) {
-            IndexTestUtil.enableRangeIndexForJoin();
+            kieBaseOption = BetaRangeIndexOption.ENABLED;
         } else {
-            IndexTestUtil.disableRangeIndexForJoin();
+            kieBaseOption = BetaRangeIndexOption.DISABLED;
         }
-        kieBase = BuildtimeUtil.createKieBaseFromDrl(drl);
+        kieBase = BuildtimeUtil.createKieBaseFromDrl(drl, kieBaseOption);
     }
 
     @Setup

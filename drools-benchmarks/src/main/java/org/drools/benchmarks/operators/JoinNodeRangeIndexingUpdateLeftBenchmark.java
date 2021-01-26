@@ -28,6 +28,8 @@ import org.drools.benchmarks.model.Account;
 import org.drools.benchmarks.model.Transaction;
 import org.drools.core.common.InternalFactHandle;
 import org.drools.core.util.index.IndexTestUtil;
+import org.kie.api.conf.BetaRangeIndexOption;
+import org.kie.api.conf.KieBaseOption;
 import org.kie.api.runtime.rule.FactHandle;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
@@ -48,10 +50,12 @@ public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark 
 
     @Param({"1", "16", "128"})
 //    @Param({"4", "8"})
+//    @Param({"128"})
     protected int _accountNum;
 
-    @Param({"1", "16", "128"})
+//    @Param({"1", "16", "128"})
 //    @Param({"4", "8"})
+//    @Param({"128"})
     protected int _transactionNum;
 
     @Param({"false", "true"})
@@ -59,6 +63,8 @@ public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark 
 
     @Param({"One", "Half", "All"})
 //    @Param({"One"})
+//    @Param({"One", "All"})
+
     protected String match;
     
     
@@ -85,12 +91,13 @@ public class JoinNodeRangeIndexingUpdateLeftBenchmark extends AbstractBenchmark 
 
 //        System.out.println(drl);
 
+        KieBaseOption kieBaseOption;
         if (rangeIndexEnabled) {
-            IndexTestUtil.enableRangeIndexForJoin();
+            kieBaseOption = BetaRangeIndexOption.ENABLED;
         } else {
-            IndexTestUtil.disableRangeIndexForJoin();
+            kieBaseOption = BetaRangeIndexOption.DISABLED;
         }
-        kieBase = BuildtimeUtil.createKieBaseFromDrl(drl);
+        kieBase = BuildtimeUtil.createKieBaseFromDrl(drl, kieBaseOption);
     }
 
     @Setup
