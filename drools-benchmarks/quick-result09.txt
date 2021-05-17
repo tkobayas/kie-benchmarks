@@ -1,0 +1,16 @@
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 10 -i 10 org.drools.benchmarks.turtle.buildtime.BuildKJarFromResourceStoreFirstBenchmark
+
+# Run complete. Total time: 00:15:18
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                        (numberOfRules)  (storeFirst)  (useCanonicalModel)  Mode  Cnt     Score     Error  Units
+BuildKJarFromResourceStoreFirstBenchmark.createKJarFromResource             1000          true                 true  avgt   10  1088.595 ±  13.971  ms/op
+BuildKJarFromResourceStoreFirstBenchmark.createKJarFromResource             1000         false                 true  avgt   10  1079.240 ±  20.822  ms/op
+BuildKJarFromResourceStoreFirstBenchmark.createKJarFromResource             2000          true                 true  avgt   10  3126.394 ± 271.611  ms/op
+BuildKJarFromResourceStoreFirstBenchmark.createKJarFromResource             2000         false                 true  avgt   10  3217.126 ± 160.567  ms/op
+

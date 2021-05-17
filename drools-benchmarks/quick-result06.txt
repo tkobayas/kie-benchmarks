@@ -1,0 +1,20 @@
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1 -i 2 org.drools.benchmarks.turtle.buildtime.BuildKieBaseFromContainerStoreFirstBenchmark
+
+# Run complete. Total time: 00:05:05
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                             (numberOfRules)                   (rulesProviderId)  (storeFirst)  (useCanonicalModel)  Mode  Cnt    Score   Error  Units
+BuildKieBaseFromContainerStoreFirstBenchmark.getKieBaseFromContainer             1000  SimpleRulesWithConstraintsProvider          true                 true    ss    2  147.489          ms/op
+BuildKieBaseFromContainerStoreFirstBenchmark.getKieBaseFromContainer             1000  SimpleRulesWithConstraintsProvider         false                 true    ss    2  278.734          ms/op
+BuildKieBaseFromContainerStoreFirstBenchmark.getKieBaseFromContainer             1000              RulesWithJoinsProvider          true                 true    ss    2  284.986          ms/op
+BuildKieBaseFromContainerStoreFirstBenchmark.getKieBaseFromContainer             1000              RulesWithJoinsProvider         false                 true    ss    2  319.149          ms/op
+BuildKieBaseFromContainerStoreFirstBenchmark.getKieBaseFromContainer             2000  SimpleRulesWithConstraintsProvider          true                 true    ss    2  387.915          ms/op
+BuildKieBaseFromContainerStoreFirstBenchmark.getKieBaseFromContainer             2000  SimpleRulesWithConstraintsProvider         false                 true    ss    2  464.585          ms/op
+BuildKieBaseFromContainerStoreFirstBenchmark.getKieBaseFromContainer             2000              RulesWithJoinsProvider          true                 true    ss    2  531.557          ms/op
+BuildKieBaseFromContainerStoreFirstBenchmark.getKieBaseFromContainer             2000              RulesWithJoinsProvider         false                 true    ss    2  718.645          ms/op
+
