@@ -19,3 +19,9 @@ java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -
 java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 2 -i 4 org.drools.benchmarks.turtle.buildtime.BuildKieBaseFromContainerStoreFirstBenchmark
 
 java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 10 -i 10 org.drools.benchmarks.turtle.buildtime.BuildKJarFromResourceStoreFirstBenchmark
+
+
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 2 -i 20 org.drools.benchmarks.turtle.buildtime.BuildKieBaseFromContainerStoreFirstBenchmark
+
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 2 -i 50 org.drools.benchmarks.turtle.buildtime.BuildKJarFromResourceStoreFirstBenchmark
