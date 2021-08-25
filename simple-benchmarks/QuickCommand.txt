@@ -1,0 +1,17 @@
+java -jar target/simple-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 0 -i 1 org.drools.benchmarks.marshaller.JSONMarshallerDroolsCommandBenchmark
+
+java -jar target/simple-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1 -i 1 org.drools.benchmarks.marshaller.JSONMarshallerDroolsCommandBenchmark
+
+java -jar target/simple-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 10 -i 10 org.drools.benchmarks.marshaller.JSONMarshallerDroolsCommandBenchmark
+
+java -jar target/simple-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 100 -i 100 org.drools.benchmarks.marshaller.JSONMarshallerDroolsCommandBenchmark
+
+java -jar target/simple-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -f 1 -wi 1000 -i 1000 org.drools.benchmarks.marshaller.JSONMarshallerDroolsCommandBenchmark
+
+
+Benchmark                                  (allClassNamePayload)  (findDeserializerFirst)  Mode  Cnt    Score   Error  Units
+JSONMarshallerDroolsCommandBenchmark.test                  false                    false    ss  100  309.270 ± 2.267  ms/op
+JSONMarshallerDroolsCommandBenchmark.test                  false                     true    ss  100   11.168 ± 0.954  ms/op
+JSONMarshallerDroolsCommandBenchmark.test                   true                    false    ss  100   14.598 ± 1.087  ms/op
+JSONMarshallerDroolsCommandBenchmark.test                   true                     true    ss  100   14.662 ± 1.179  ms/op
+
