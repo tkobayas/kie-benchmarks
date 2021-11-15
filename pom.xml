@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.kie</groupId>
-    <artifactId>kie-parent</artifactId>
-    <version>7.62.0-SNAPSHOT</version>
-  </parent>
+  <!-- <parent> -->
+  <!-- <groupId>org.kie</groupId> -->
+  <!-- <artifactId>kie-parent</artifactId> -->
+  <!-- <version>8.14.0-SNAPSHOT</version> -->
+  <!-- </parent> -->
 
+  <groupId>org.kie</groupId>
   <artifactId>kie-benchmarks</artifactId>
   <packaging>pom</packaging>
+  <version>8.14.0-SNAPSHOT</version>
 
   <name>KIE Benchmarks</name>
   <description>
@@ -19,10 +21,13 @@
   </description>
 
   <properties>
+
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <version.jmh>1.26</version.jmh>
-    <!-- This is here so we can override the version from parent, i.e. benchmark other version -->
+    <!-- This is here so we can override the version from parent, i.e. benchmark 
+      other version -->
+    <version.org.kie>8.14.0-SNAPSHOT</version.org.kie>
     <kie.bom.version>${version.org.kie}</kie.bom.version>
   </properties>
 
@@ -30,7 +35,35 @@
     <dependencies>
       <dependency>
         <groupId>org.kie</groupId>
-        <artifactId>kie-platform-bom</artifactId>
+        <artifactId>kie-core-bom</artifactId>
+        <version>${kie.bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.drools</groupId>
+        <artifactId>drools-bom</artifactId>
+        <version>${kie.bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-dmn-bom</artifactId>
+        <version>${kie.bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-pmml-bom</artifactId>
+        <version>${kie.bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.kie</groupId>
+        <artifactId>drools-build-parent</artifactId>
         <version>${kie.bom.version}</version>
         <type>pom</type>
         <scope>import</scope>
@@ -50,12 +83,13 @@
 
   <modules>
     <module>drools-benchmarks</module>
-    <module>jbpm-benchmarks</module>
-    <module>optaplanner-7-benchmarks</module>
+    <!-- <module>jbpm-benchmarks</module> -->
+    <!-- <module>optaplanner-7-benchmarks</module> -->
   </modules>
 
   <repositories>
-    <!-- Bootstrap repository to locate the parent pom when the parent pom has not been build locally. -->
+    <!-- Bootstrap repository to locate the parent pom when the parent pom 
+      has not been build locally. -->
     <repository>
       <id>jboss-public-repository-group</id>
       <name>JBoss Public Repository Group</name>
