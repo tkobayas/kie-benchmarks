@@ -40,15 +40,15 @@ import org.openjdk.jmh.annotations.Warmup;
 
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)
-@Warmup(iterations = 15, time = 10, timeUnit = TimeUnit.SECONDS)
-@Measurement(iterations = 5, time = 10, timeUnit = TimeUnit.SECONDS)
+@Warmup(iterations = 10, time = 5, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 5, time = 5, timeUnit = TimeUnit.SECONDS)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 public class BuildKJarFromResourceBenchmark {
 
-    @Param({"true", "false"})
+    @Param({"true"})
     private boolean useCanonicalModel;
 
-    @Param({"1000", "2000"})
+    @Param({"500"})
     private int numberOfRules;
 
     private Resource drlResource;
