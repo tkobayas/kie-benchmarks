@@ -1,0 +1,2 @@
+java -jar target/drools-benchmarks.jar -jvmArgs "-Xms4g -Xmx4g" -foe true -rf csv -rff results.csv org.drools.benchmarks.turtle.buildtime.BuildKJarFromResourceBenchmark
+
