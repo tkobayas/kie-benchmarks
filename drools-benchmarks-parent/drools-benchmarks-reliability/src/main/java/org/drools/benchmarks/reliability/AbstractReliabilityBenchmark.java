@@ -61,10 +61,12 @@ public abstract class AbstractReliabilityBenchmark extends AbstractBenchmark {
         }
     }
 
-    @Param({"NONE", "EMBEDDED", "REMOTE", "REMOTEPROTO"})
+    //@Param({"NONE", "EMBEDDED", "REMOTE", "REMOTEPROTO"})
+    @Param({"EMBEDDED"})
     private Mode mode;
 
     @Param({"true", "false"})
+    //@Param({"false"})
     private boolean useSafepoints;
 
     private InfinispanContainer container;
