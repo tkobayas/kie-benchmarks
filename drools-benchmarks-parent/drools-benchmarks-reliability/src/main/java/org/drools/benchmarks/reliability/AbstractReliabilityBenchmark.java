@@ -61,11 +61,17 @@ public abstract class AbstractReliabilityBenchmark extends AbstractBenchmark {
         }
     }
 
-    @Param({"NONE", "EMBEDDED", "REMOTE", "REMOTEPROTO"})
+    //@Param({"NONE", "EMBEDDED", "REMOTE", "REMOTEPROTO"})
+    //@Param({"EMBEDDED", "REMOTE"})
+    @Param({"EMBEDDED"})
+
     private Mode mode;
 
     @Param({"true", "false"})
     private boolean useSafepoints;
+
+    @Param({"true", "false"})
+    private boolean useActivationKey;
 
     private InfinispanContainer container;
 
@@ -116,6 +122,9 @@ public abstract class AbstractReliabilityBenchmark extends AbstractBenchmark {
             PersistedSessionOption option = PersistedSessionOption.newSession().withPersistenceStrategy(PersistedSessionOption.PersistenceStrategy.STORES_ONLY);
             if (useSafepoints) {
                 option = option.withSafepointStrategy(PersistedSessionOption.SafepointStrategy.AFTER_FIRE);
+            }
+            if (useActivationKey) {
+                option = option.withActivationStrategy(PersistedSessionOption.ActivationStrategy.ACTIVATION_KEY);
             }
             kieSession = RuntimeUtil.createKieSession(kieBase, option);
         } else {

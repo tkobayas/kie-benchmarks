@@ -43,6 +43,7 @@ public class InsertAndFireBenchmark extends AbstractReliabilityBenchmark {
     private int factsNr;
 
     @Param({"1"})
+//    @Param({"0"})
     private int joinsNr;
 
     @Setup
@@ -70,6 +71,9 @@ public class InsertAndFireBenchmark extends AbstractReliabilityBenchmark {
                 kieSession.insert(new D(rulesNr + factsNr * 2 + i + 3));
             }
         }
+//        int fired = kieSession.fireAllRules();
+//        System.out.println("fired : " + fired);
         return kieSession.fireAllRules();
+//        return fired;
     }
 }
