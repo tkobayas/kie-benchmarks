@@ -74,6 +74,11 @@
       <artifactId>protostream-processor</artifactId>
       <optional>true</optional>
     </dependency>
+
+    <dependency>
+      <groupId>org.drools</groupId>
+      <artifactId>drools-reliability-redis</artifactId>
+    </dependency>
   </dependencies>
 
   <build>

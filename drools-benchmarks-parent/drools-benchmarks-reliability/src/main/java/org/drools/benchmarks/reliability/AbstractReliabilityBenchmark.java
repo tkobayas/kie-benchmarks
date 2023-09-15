@@ -20,6 +20,8 @@ import java.nio.file.Path;
 
 import org.drools.benchmarks.common.AbstractBenchmark;
 import org.drools.benchmarks.common.util.RuntimeUtil;
+import org.drools.reliability.core.ReliableGlobalResolverFactory;
+import org.drools.reliability.core.SimpleReliableObjectStoreFactory;
 import org.drools.reliability.core.StorageManagerFactory;
 import org.drools.reliability.infinispan.InfinispanStorageManager;
 import org.drools.reliability.infinispan.InfinispanStorageManagerFactory;
@@ -34,6 +36,7 @@ import org.openjdk.jmh.annotations.TearDown;
 
 import static org.drools.benchmarks.reliability.AbstractReliabilityBenchmark.Mode.EMBEDDED;
 import static org.drools.benchmarks.reliability.AbstractReliabilityBenchmark.Mode.NONE;
+import static org.drools.benchmarks.reliability.AbstractReliabilityBenchmark.Mode.REDIS;
 import static org.drools.benchmarks.reliability.AbstractReliabilityBenchmark.Mode.REMOTE;
 import static org.drools.benchmarks.reliability.AbstractReliabilityBenchmark.Mode.REMOTEPROTO;
 import static org.drools.reliability.infinispan.EmbeddedStorageManager.GLOBAL_STATE_DIR;
@@ -48,7 +51,8 @@ public abstract class AbstractReliabilityBenchmark extends AbstractBenchmark {
         NONE(null),
         EMBEDDED("EMBEDDED"),
         REMOTE("REMOTE"),
-        REMOTEPROTO("REMOTE");
+        REMOTEPROTO("REMOTE"),
+        REDIS("REDIS");
 
         private String infinispanStorageMode;
 
@@ -61,7 +65,7 @@ public abstract class AbstractReliabilityBenchmark extends AbstractBenchmark {
         }
     }
 
-    @Param({"NONE", "EMBEDDED", "REMOTE", "REMOTEPROTO"})
+    @Param({"EMBEDDED", "REDIS"})
     private Mode mode;
 
     @Param({"true", "false"})
@@ -73,8 +77,13 @@ public abstract class AbstractReliabilityBenchmark extends AbstractBenchmark {
     public void setupEnvironment() {
         FileUtils.deleteDirectory(Path.of(GLOBAL_STATE_DIR));
 
-        if (mode != NONE) {
+        if (mode == EMBEDDED || mode == REMOTE || mode == REMOTEPROTO) {
             System.setProperty(INFINISPAN_STORAGE_MODE, mode.getInfinispanStorageMode());
+            prioritizeInfinispanServices();
+        }
+
+        if (mode == REDIS) {
+            prioritizeRedisServices();
         }
 
         if (mode == EMBEDDED || mode == REMOTE) {
@@ -93,6 +102,18 @@ public abstract class AbstractReliabilityBenchmark extends AbstractBenchmark {
             RemoteCacheManager remoteCacheManager = container.getRemoteCacheManager(storageManager.provideAdditionalRemoteConfigurationBuilder());
             storageManager.setRemoteCacheManager(remoteCacheManager);
         }
+    }
+
+    private static void prioritizeInfinispanServices() {
+        ReliableGlobalResolverFactory.get("infinispan");
+        SimpleReliableObjectStoreFactory.get("infinispan");
+        StorageManagerFactory.get("infinispan");
+    }
+
+    private static void prioritizeRedisServices() {
+        ReliableGlobalResolverFactory.get("core");
+        SimpleReliableObjectStoreFactory.get("core");
+        StorageManagerFactory.get("redis");
     }
 
     protected void setupSerializationContext() {
