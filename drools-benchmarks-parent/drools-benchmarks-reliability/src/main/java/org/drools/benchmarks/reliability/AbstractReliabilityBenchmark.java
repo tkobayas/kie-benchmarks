@@ -67,7 +67,7 @@ public abstract class AbstractReliabilityBenchmark extends AbstractBenchmark {
     @Param({"true", "false"})
     private boolean useSafepoints;
 
-    private InfinispanContainer container;
+    protected InfinispanContainer container;
 
     @Setup
     public void setupEnvironment() {
