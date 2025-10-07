@@ -79,7 +79,11 @@ private int _factsNumber;
         }
 
         // use canonical model
-        kieBase = BuildtimeUtil.createKieBaseFromDrl(true, sb.toString());
+        synchronized (MatchesOperatorMultiThreadBenchmark.class) {
+            if (kieBase == null) {
+                kieBase = BuildtimeUtil.createKieBaseFromDrl(true, sb.toString());
+            }
+        }
     }
 
     @Setup
