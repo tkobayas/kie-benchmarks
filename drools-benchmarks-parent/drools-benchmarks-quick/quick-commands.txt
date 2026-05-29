@@ -1,0 +1,2 @@
+java -jar target/drools-benchmarks-quick.jar CompilePojoClassesBenchmark
+
